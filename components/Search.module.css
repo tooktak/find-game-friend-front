@@ -1,0 +1,13 @@
+.search[type="text"] {
+  border: none;
+  border-bottom: 2px solid var(--main-color);
+  outline: none;
+  font-size: 1.125rem;
+  padding: 6px 12px;
+  min-width: 400px;
+}
+
+.search[type="text"]::placeholder {
+  color: #035AFC90;
+  text-align: center;
+}
