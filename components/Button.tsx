@@ -2,7 +2,7 @@ import styles from './Button.module.scss';
 
 type Props = {
   children: string;
-  onClick: () => void;
+  onClick?: () => void;
   size?: 'large' | 'medium' | 'small';
   color?: 'main' | 'sub' | 'tag';
   outline?: boolean;

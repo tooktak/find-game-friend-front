@@ -1,25 +1,28 @@
 import { useCallback, useState } from 'react';
-import { useRouter } from 'next/router';
 import Button from '@/components/Button';
+import Link from 'next/link';
 
 const HeaderRight = () => {
-  const [isLogin] = useState<boolean>(false);
-  const router = useRouter();
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
-  const onLogin = useCallback(() => {
-    router.push('/login');
-  }, [router]);
+  const handleLogout = useCallback(() => {
+    setIsLogin(!isLogin);
+  }, [isLogin]);
 
   return (
     <>
       {isLogin ? (
-        <Button color="sub" onClick={onLogin}>
-          logout
-        </Button>
+        <Link href="/" passHref>
+          <Button color="sub" onClick={handleLogout}>
+            logout
+          </Button>
+        </Link>
       ) : (
-        <Button color="main" onClick={onLogin}>
-          login
-        </Button>
+        <Link href="/login" passHref>
+          <Button color="main" onClick={handleLogout}>
+            login
+          </Button>
+        </Link>
       )}
     </>
   );
