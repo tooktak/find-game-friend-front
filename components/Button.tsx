@@ -1,15 +1,31 @@
-import { useCallback } from 'react';
-import { useRouter } from 'next/router';
-import styles from './Button.module.css';
+import styles from './Button.module.scss';
 
-const Button = () => {
-  const router = useRouter();
-  const onClick = useCallback(() => {
-    router.push('/login');
-  }, [router]);
+type Props = {
+  children: string;
+  onClick: () => void;
+  size?: 'large' | 'medium' | 'small';
+  color?: 'main' | 'sub' | 'tag';
+  outline?: boolean;
+  disabled?: boolean;
+};
+
+const Button = ({
+  children,
+  onClick,
+  size = 'medium',
+  color,
+  outline = false,
+  disabled,
+}: Props) => {
   return (
-    <button className={styles.button} onClick={onClick}>
-      로그인
+    <button
+      className={`${styles.button} ${styles[size]} ${
+        color ? styles[color] : ''
+      } ${outline ? styles.outline : ''}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {children}
     </button>
   );
 };

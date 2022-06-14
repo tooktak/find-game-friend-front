@@ -1,0 +1,113 @@
+$main: #035aff;
+$sub: #565656;
+$error: #ee2849;
+$disabled: #888888;
+$tag: #91A1BF;
+
+.button {
+  display: inline-flex;
+  color: white;
+  height: 1.75rem;
+  font-size: 0.875rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  background: $sub;
+
+  &:hover {
+    background: lighten($sub, 10%);
+    transition: 0.5s;
+  }
+  
+  &:active {
+    background: darken($sub, 10%);
+  }
+  
+  &.outline {
+    color: $sub;
+    background: none;
+    border: 1px solid $sub;
+    &:hover {
+      background: $sub;
+      color: white;
+    }
+  }
+
+  &.large {
+    height: 2rem;
+    font-size: 1rem;
+    align-items: center;
+  }
+
+  &.medium {
+    height: 1.75rem;
+    font-size: 0.875rem;
+    align-items: center;
+  }
+
+  &.small {
+    height: 1.5rem;
+    font-size: 0.75rem;
+    align-items: center;
+  }
+
+  @mixin button-color($color) {
+    background: $color;
+    &:hover {
+      background: lighten($color, 10%);
+    }
+    &:active {
+      background: darken($color, 10%);
+    }
+    &.outline {
+      color: $color;
+      background: none;
+      border: 1px solid $color;
+      &:hover {
+        background: $color;
+        color: white;
+      }
+      &:disabled {
+        color: $disabled;
+        cursor: default;
+        border: 1px solid $disabled;
+        &:hover {
+          background: transparent;
+          color: $disabled;
+        }
+      }
+    }
+  }
+
+  &.main {
+    @include button-color($main);
+  }
+
+  &.sub {
+    @include button-color($sub);
+  }
+  
+  &.error {
+    @include button-color($error);
+  }
+
+  &.tag {
+    @include button-color($tag);
+  }
+
+  &:disabled {
+    color: $disabled;
+    background: none;
+    border: 1px solid $disabled;
+    cursor: default;
+    &:hover {
+      background: transparent;
+      color: $disabled;
+    }
+  }
+}
