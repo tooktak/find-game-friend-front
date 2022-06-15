@@ -11,6 +11,7 @@ const nextConfig = {
       alias: {
         '@/components': path.resolve(__dirname, 'src/components'),
         '@/lib': path.resolve(__dirname, 'src/lib'),
+        '@/layout': path.resolve(__dirname, 'src/layout'),
         '@/pages': path.resolve(__dirname, 'src/pages'),
         '@/posts': path.resolve(__dirname, 'src/posts'),
         '@/public': path.resolve(__dirname, 'src/public'),
