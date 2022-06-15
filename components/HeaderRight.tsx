@@ -13,15 +13,19 @@ const HeaderRight = () => {
     <>
       {isLogin ? (
         <Link href="/" passHref>
-          <Button color="sub" onClick={handleLogout}>
-            logout
-          </Button>
+          <a>
+            <Button color="sub" onClick={handleLogout}>
+              logout
+            </Button>
+          </a>
         </Link>
       ) : (
         <Link href="/login" passHref>
-          <Button color="main" onClick={handleLogout}>
-            login
-          </Button>
+          <a>
+            <Button color="main" onClick={handleLogout}>
+              login
+            </Button>
+          </a>
         </Link>
       )}
     </>
