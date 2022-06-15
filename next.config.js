@@ -6,6 +6,12 @@ const path = require('path');
 const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
+  sassOptions: {
+    includePaths: [
+      path.resolve(__dirname, 'src/styles'),
+      path.resolve(__dirname, 'src/components'),
+    ],
+  },
   webpack(config) {
     config.resolve = {
       alias: {

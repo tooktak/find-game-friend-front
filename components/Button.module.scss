@@ -1,8 +1,4 @@
-$main: #035aff;
-$sub: #565656;
-$error: #ee2849;
-$disabled: #888888;
-$tag: #91A1BF;
+@import '@/styles/theme.scss';
 
 .button {
   display: inline-flex;
@@ -17,24 +13,24 @@ $tag: #91A1BF;
   border: none;
   cursor: pointer;
   align-items: center;
-  background: $sub;
+  background: $secondary;
   user-select: none;
 
   &:hover {
-    background: lighten($sub, 10%);
+    background: lighten($secondary, 10%);
     transition: 0.5s;
   }
   
   &:active {
-    background: darken($sub, 10%);
+    background: darken($secondary, 10%);
   }
   
   &.outline {
-    color: $sub;
+    color: $secondary;
     background: none;
-    border: 1px solid $sub;
+    border: 1px solid $secondary;
     &:hover {
-      background: $sub;
+      background: $secondary;
       color: white;
     }
   }
@@ -86,11 +82,11 @@ $tag: #91A1BF;
   }
 
   &.main {
-    @include button-color($main);
+    @include button-color($primary);
   }
 
   &.sub {
-    @include button-color($sub);
+    @include button-color($secondary);
   }
   
   &.error {
