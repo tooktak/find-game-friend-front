@@ -1,4 +1,5 @@
 import styles from './Button.module.scss';
+import cx from '@/styles/cx';
 
 type Props = {
   children: string;
@@ -17,14 +18,10 @@ const Button = ({
   outline = false,
   disabled,
 }: Props) => {
+  const classNames = cx(styles)('button', size, color, { outline, disabled });
+
   return (
-    <button
-      className={`${styles.button} ${styles[size]} ${
-        color ? styles[color] : ''
-      } ${outline ? styles.outline : ''}`}
-      onClick={onClick}
-      disabled={disabled}
-    >
+    <button className={classNames} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );
