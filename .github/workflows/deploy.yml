@@ -11,7 +11,6 @@ jobs:
         env:
           KUBE_HOST: ${{ secrets.KUBE_HOST }}
           KUBE_CERTIFICATE: ${{ secrets.KUBE_CERTIFICATE }}
-          KUBE_USERNAME: ${{ secrets.KUBE_USERNAME }}
-          KUBE_PASSWORD: ${{ secrets.KUBE_PASSWORD }}
+          KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
         with:
           args: get pods
