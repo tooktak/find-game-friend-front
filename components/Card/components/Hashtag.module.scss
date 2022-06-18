@@ -1,0 +1,10 @@
+@import '@/styles/theme.scss';
+
+.hashtag {
+  margin-right: 0.125rem;
+  color: $hashtag-text;
+  font-size: 1rem;
+  &:before {
+    content: '#';
+  }
+}
