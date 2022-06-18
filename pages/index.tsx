@@ -12,7 +12,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <p>hello, world</p>
+        <p>hello, world2</p>
         <Link href="/about">To About</Link>
         <Link href="/component_test">To Test Layout</Link>
       </main>
