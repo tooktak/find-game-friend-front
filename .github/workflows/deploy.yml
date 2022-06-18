@@ -1,0 +1,17 @@
+name: Test-Lint-Build
+on:
+  pull_request:
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        uses: actions-hub/kubectl@master
+        env:
+          KUBE_HOST: ${{ secrets.KUBE_HOST }}
+          KUBE_CERTIFICATE: ${{ secrets.KUBE_CERTIFICATE }}
+          KUBE_USERNAME: ${{ secrets.KUBE_USERNAME }}
+          KUBE_PASSWORD: ${{ secrets.KUBE_PASSWORD }}
+        with:
+          args: get pods
