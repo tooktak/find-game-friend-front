@@ -5,6 +5,7 @@
   grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   width: 100%;
+  margin: auto;
 }
 
 @include tablet {
@@ -16,5 +17,25 @@
 @include desktop {
   .grid {
     grid-template-columns: repeat(4, 1fr);
+    max-width: $desktop-layout;
+  }
+}
+
+@include desktop-hd {
+  .grid {
+    max-width: $desktop-hd-layout;
+  }
+}
+
+@include desktop-fhd {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: $desktop-fhd-layout;
+  }
+}
+
+@include desktop-qhd {
+  .grid {
+    max-width: $desktop-qhd-layout;
   }
 }
