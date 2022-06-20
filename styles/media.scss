@@ -1,18 +1,17 @@
 $tablet: 768px;
-$desktop-sm: 1024px;
-$desktop: 1280px;
+$desktop: 1024px;
 $desktop-hd: 1440px;
 $desktop-fhd: 1920px;
 $desktop-qhd: 2560px;
-$desktop-uhd: 3840px;
+
+$tablet-layout: 100%;
+$desktop-layout: 960px;
+$desktop-hd-layout: $desktop;
+$desktop-fhd-layout: 1376px;
+$desktop-qhd-layout: 1728px;
 
 @mixin tablet {
   @media (min-width: #{$tablet}) {
-    @content;
-  }
-}
-@mixin desktop-sm {
-  @media (min-width: #{$desktop-sm}) {
     @content;
   }
 }
@@ -33,11 +32,6 @@ $desktop-uhd: 3840px;
 }
 @mixin desktop-qhd {
   @media (min-width: #{$desktop-qhd}) {
-    @content;
-  }
-}
-@mixin desktop-uhd {
-  @media (min-width: #{$desktop-uhd}) {
     @content;
   }
 }

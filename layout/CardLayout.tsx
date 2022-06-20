@@ -3,64 +3,66 @@ import GridLayout from '@/components/GridLayout';
 
 const CardLayout = () => {
   return (
-    <GridLayout>
-      <FindMatePostCard
-        thumbnail="/google-extention-architecture.png"
-        title="titleeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee..."
-        kakaoLink="http://google.com"
-        discordLink="http://google.com"
-        content="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-        hashtags={['aaa', 'bbb']}
-      />
-      <FindMatePostCard
-        thumbnail="/test.jpg"
-        title="title..."
-        kakaoLink="http://google.com"
-        discordLink="http://google.com"
-        content="content..."
-        hashtags={['aaa', 'bbb']}
-      />
-      <FindMatePostCard
-        thumbnail="/logo.jpg"
-        title="title..."
-        kakaoLink="http://google.com"
-        discordLink="http://google.com"
-        content="content..."
-        hashtags={['aaa', 'bbb']}
-      />
-      <FindMatePostCard
-        thumbnail="/test1.png"
-        title="title..."
-        kakaoLink="http://google.com"
-        discordLink="http://google.com"
-        content="content..."
-        hashtags={['aaa', 'bbb']}
-      />
-      <FindMatePostCard
-        thumbnail="/test.jpg"
-        title="title..."
-        kakaoLink="http://google.com"
-        discordLink="http://google.com"
-        content="content..."
-        hashtags={['aaa', 'bbb']}
-      />
-      <FindMatePostCard
-        thumbnail="/test.jpg"
-        title="title..."
-        kakaoLink="http://google.com"
-        discordLink="http://google.com"
-        content="content..."
-        hashtags={['aaa', 'bbb']}
-      />
-      <FindMatePostCard
-        thumbnail="/test.jpg"
-        title="title..."
-        kakaoLink="http://google.com"
-        discordLink="http://google.com"
-        content="content..."
-        hashtags={['aaa', 'bbb']}
-      />
-    </GridLayout>
+    <main>
+      <GridLayout>
+        <FindMatePostCard
+          thumbnail="/test3.jpg"
+          title="MapleStory"
+          kakaoLink="http://google.com"
+          discordLink="http://google.com"
+          content="루나 서버 같이 할 친구 구합니다"
+          hashtags={['루나', '메이플', '...', '...']}
+        />
+        <FindMatePostCard
+          thumbnail="/test3.jpg"
+          title="MapleStory"
+          kakaoLink="http://google.com"
+          discordLink="http://google.com"
+          content="루나 서버 같이 할 친구 구합니다"
+          hashtags={['루나', '메이플', '...', '...']}
+        />
+        <FindMatePostCard
+          thumbnail="/test3.jpg"
+          title="MapleStory"
+          kakaoLink="http://google.com"
+          discordLink="http://google.com"
+          content="루나 서버 같이 할 친구 구합니다"
+          hashtags={['루나', '메이플', '...', '...']}
+        />
+        <FindMatePostCard
+          thumbnail="/test3.jpg"
+          title="MapleStory"
+          kakaoLink="http://google.com"
+          discordLink="http://google.com"
+          content="루나 서버 같이 할 친구 구합니다"
+          hashtags={['루나', '메이플', '...', '...']}
+        />
+        <FindMatePostCard
+          thumbnail="/test3.jpg"
+          title="MapleStory"
+          kakaoLink="http://google.com"
+          discordLink="http://google.com"
+          content="루나 서버 같이 할 친구 구합니다"
+          hashtags={['루나', '메이플', '...', '...']}
+        />
+        <FindMatePostCard
+          thumbnail="/test3.jpg"
+          title="MapleStory"
+          kakaoLink="http://google.com"
+          discordLink="http://google.com"
+          content="루나 서버 같이 할 친구 구합니다"
+          hashtags={['루나', '메이플', '...', '...']}
+        />
+        <FindMatePostCard
+          thumbnail="/test3.jpg"
+          title="MapleStory"
+          kakaoLink="http://google.com"
+          discordLink="http://google.com"
+          content="루나 서버 같이 할 친구 구합니다"
+          hashtags={['루나', '메이플', '...', '...']}
+        />
+      </GridLayout>
+    </main>
   );
 };
 
