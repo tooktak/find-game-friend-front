@@ -1,18 +1,13 @@
-import { useCallback } from 'react';
-import { useRouter } from 'next/router';
-import styles from './Logo.module.css';
+import Link from 'next/link';
+import styles from './Logo.module.scss';
 
 const Logo = () => {
-  const router = useRouter();
-
-  const onClick = useCallback(() => {
-    router.push('/');
-  }, [router]);
-
   return (
-    <div className={styles.logo} onClick={onClick}>
-      <h1 className={styles.logoText}>FindGameMeta</h1>
-    </div>
+    <Link href="/" passHref>
+      <div className={styles.logo}>
+        <h1 className={styles.logoText}>FindGameMeta</h1>
+      </div>
+    </Link>
   );
 };
 

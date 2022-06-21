@@ -22,7 +22,8 @@
       "@/pages/*": ["pages/*"],
       "@/posts/*": ["posts/*"],
       "@/public/*": ["public/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/hooks/*": ["hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

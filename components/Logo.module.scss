@@ -1,0 +1,33 @@
+@import '@/styles/theme.scss';
+@import '@/styles/media.scss';
+
+.logo {
+  display: flex;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  &:before {
+    display:inline-block;
+    content: '';
+    margin-right: 8px;
+    background-image: url("/logo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 2.25rem;
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+.logoText{
+  display: none;
+  font-size: 1.375rem;
+  font-family: 'Gugi', cursive;
+  color: $primary;
+}
+
+@include tablet {
+  .logoText {
+    display: block;
+  }
+}
