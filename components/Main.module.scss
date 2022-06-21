@@ -1,0 +1,11 @@
+@import '@/styles/media.scss';
+
+.main {
+  padding: 0 1rem;
+}
+
+@include desktop {
+  .main {
+    padding: 0;
+  }
+}

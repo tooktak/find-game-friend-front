@@ -1,0 +1,69 @@
+@import '@/styles/media.scss';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  height: 4rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.left {
+  display: flex;
+  align-items: stretch;
+  padding-left: 1rem;
+}
+
+.center {
+  margin-left: calc(960px / 2 - 220px - 200px);
+  margin-right: auto;
+  display: none;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+@include desktop {
+  .nav {
+    max-width: $desktop-layout;
+  }
+  .center {
+    display: flex;
+    align-items: center;
+  }
+  .left {
+    min-width: 220px;
+    padding-left: 0;
+  }
+  .right {
+    padding-right: 0;
+  }
+}
+
+@include desktop-hd {
+  .nav {
+    max-width: $desktop-hd-layout;
+  }
+}
+
+@include desktop-fhd {
+  .nav {
+    max-width: $desktop-fhd-layout;
+  }
+}
+
+@include desktop-qhd {
+  .nav {
+    max-width: $desktop-qhd-layout;
+  }
+}
