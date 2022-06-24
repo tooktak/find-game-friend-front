@@ -1,68 +1,34 @@
 import FindMatePostCard from '@/components/FindMatePostCard';
 import GridLayout from '@/components/GridLayout';
+import Main from '@/components/Main';
+import { useQuery } from 'react-query';
+import { QueryKeys } from '@/libs/client';
+import findMatePostService from '@/services/findMatePost';
 
 const CardLayout = () => {
+  const { data } = useQuery<FindMatePost[]>(
+    QueryKeys.FIND_MATE_POST,
+    findMatePostService.findAll,
+  );
+
   return (
-    <main>
+    <Main>
       <GridLayout>
-        <FindMatePostCard
-          thumbnail="/test3.jpg"
-          title="MapleStory"
-          kakaoLink="http://google.com"
-          discordLink="http://google.com"
-          content="루나 서버 같이 할 친구 구합니다"
-          hashtags={['루나', '메이플', '...', '...']}
-        />
-        <FindMatePostCard
-          thumbnail="/test3.jpg"
-          title="MapleStory"
-          kakaoLink="http://google.com"
-          discordLink="http://google.com"
-          content="루나 서버 같이 할 친구 구합니다"
-          hashtags={['루나', '메이플', '...', '...']}
-        />
-        <FindMatePostCard
-          thumbnail="/test3.jpg"
-          title="MapleStory"
-          kakaoLink="http://google.com"
-          discordLink="http://google.com"
-          content="루나 서버 같이 할 친구 구합니다"
-          hashtags={['루나', '메이플', '...', '...']}
-        />
-        <FindMatePostCard
-          thumbnail="/test3.jpg"
-          title="MapleStory"
-          kakaoLink="http://google.com"
-          discordLink="http://google.com"
-          content="루나 서버 같이 할 친구 구합니다"
-          hashtags={['루나', '메이플', '...', '...']}
-        />
-        <FindMatePostCard
-          thumbnail="/test3.jpg"
-          title="MapleStory"
-          kakaoLink="http://google.com"
-          discordLink="http://google.com"
-          content="루나 서버 같이 할 친구 구합니다"
-          hashtags={['루나', '메이플', '...', '...']}
-        />
-        <FindMatePostCard
-          thumbnail="/test3.jpg"
-          title="MapleStory"
-          kakaoLink="http://google.com"
-          discordLink="http://google.com"
-          content="루나 서버 같이 할 친구 구합니다"
-          hashtags={['루나', '메이플', '...', '...']}
-        />
-        <FindMatePostCard
-          thumbnail="/test3.jpg"
-          title="MapleStory"
-          kakaoLink="http://google.com"
-          discordLink="http://google.com"
-          content="루나 서버 같이 할 친구 구합니다"
-          hashtags={['루나', '메이플', '...', '...']}
-        />
+        {data && data.length
+          ? data.map(e => (
+              <FindMatePostCard
+                key={e.id}
+                thumbnail="/test3.jpg"
+                title={e.title}
+                kakaoLink={e.kakaoLink}
+                discordLink={e.discordLink}
+                content={e.contents}
+                hashtags={e.hashtag}
+              />
+            ))
+          : ''}
       </GridLayout>
-    </main>
+    </Main>
   );
 };
 
