@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REST_URL_SERVER || 'http://localhost:3000';
+const BASE_URL = process.env.REST_URL_SERVER || 'api';
 
 const fetcher = axios.create({
   baseURL: BASE_URL,
