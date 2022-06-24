@@ -19,13 +19,14 @@ const nextConfig = {
     config.resolve = {
       alias: {
         '@/components': path.resolve(__dirname, 'src/components'),
-        '@/lib': path.resolve(__dirname, 'src/lib'),
+        '@/libs': path.resolve(__dirname, 'src/libs'),
         '@/layout': path.resolve(__dirname, 'src/layout'),
         '@/pages': path.resolve(__dirname, 'src/pages'),
         '@/posts': path.resolve(__dirname, 'src/posts'),
         '@/public': path.resolve(__dirname, 'src/public'),
         '@/styles': path.resolve(__dirname, 'src/styles'),
         '@/hooks': path.resolve(__dirname, 'src/hooks'),
+        '@/services': path.resolve(__dirname, 'src/services'),
       },
       ...config.resolve,
     };
