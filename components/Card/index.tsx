@@ -3,10 +3,11 @@ import styles from './Card.module.scss';
 import {
   Thumbnail,
   Title,
-  Content,
+  Description,
   Hashtag,
-  KakaoLink,
-  DiscordLink,
+  IconLinks,
+  ContentHeader,
+  Content,
 } from './components';
 
 const Card = ({ children }: { children: ReactNode }) => {
@@ -15,9 +16,10 @@ const Card = ({ children }: { children: ReactNode }) => {
 
 Card.Thumbnail = Thumbnail;
 Card.Title = Title;
-Card.Content = Content;
+Card.Description = Description;
 Card.Hashtag = Hashtag;
-Card.KakaoLink = KakaoLink;
-Card.DiscordLink = DiscordLink;
+Card.IconLinks = IconLinks;
+Card.ContentHeader = ContentHeader;
+Card.Content = Content;
 
 export default Card;

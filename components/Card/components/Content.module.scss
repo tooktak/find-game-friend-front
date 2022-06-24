@@ -1,17 +1,3 @@
-@import '@/styles/theme.scss';
-
-.content {
-  color: $content-text;
-  height: 3rem;
-  font-family: 'Gugi', cursive;
-  font-size: 0.875rem;
-  line-height: 1rem;
-  word-wrap: break-word;
-  white-space : break-word;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 3; 
-  -webkit-box-orient: vertical;
+.container {
+  padding: 1rem;
 }
