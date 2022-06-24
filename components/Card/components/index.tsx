@@ -1,8 +1,17 @@
 import Thumbnail from './Thumbnail';
 import Title from './Title';
-import Content from './Content';
 import Hashtag from './Hashtag';
-import KakaoLink from './KakaoLink';
-import DiscordLink from './DiscordLink';
+import IconLinks from './IconLinks';
+import Description from './Description';
+import ContentHeader from './ContentHeader';
+import Content from './Content';
 
-export { Thumbnail, Title, Content, Hashtag, KakaoLink, DiscordLink };
+export {
+  Thumbnail,
+  Title,
+  Hashtag,
+  IconLinks,
+  Description,
+  ContentHeader,
+  Content,
+};

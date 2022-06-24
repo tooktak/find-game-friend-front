@@ -4,4 +4,14 @@ const Hashtag = ({ children }: { children: string }) => {
   return <span className={styles.hashtag}>{children}</span>;
 };
 
-export default Hashtag;
+const Hashtags = ({ hashtags }: { hashtags: string[] }) => {
+  return (
+    <div className={styles.container}>
+      {hashtags.map(hashtag => (
+        <Hashtag key={hashtag}>{hashtag}</Hashtag>
+      ))}
+    </div>
+  );
+};
+
+export default Hashtags;

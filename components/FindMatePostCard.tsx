@@ -8,7 +8,6 @@ type Props = {
   content: string;
   hashtags: string[];
 };
-import styles from './FindMatePostCard.module.scss';
 
 const FindMatePostCard = ({
   thumbnail,
@@ -20,26 +19,15 @@ const FindMatePostCard = ({
 }: Props) => {
   return (
     <Card>
-      <div>
-        <Card.Thumbnail src={thumbnail} />
-      </div>
-      <div className={styles.textWrapper}>
-        <div className={styles.header}>
+      <Card.Thumbnail src={thumbnail} />
+      <Card.Content>
+        <Card.ContentHeader>
           <Card.Title>{title}</Card.Title>
-          <div className={styles.link}>
-            <Card.KakaoLink link={kakaoLink} />
-            <Card.DiscordLink link={discordLink} />
-          </div>
-        </div>
-        <div className={styles.content}>
-          <Card.Content>{content}</Card.Content>
-        </div>
-        <div className={styles.hashtag}>
-          {hashtags.map(hashtag => (
-            <Card.Hashtag key={hashtag}>{hashtag}</Card.Hashtag>
-          ))}
-        </div>
-      </div>
+          <Card.IconLinks kakao={kakaoLink} discord={discordLink} />
+        </Card.ContentHeader>
+        <Card.Description>{content}</Card.Description>
+        <Card.Hashtag hashtags={hashtags} />
+      </Card.Content>
     </Card>
   );
 };
