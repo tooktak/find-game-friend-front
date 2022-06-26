@@ -9,3 +9,8 @@ type FindMatePost = {
   memberId: string;
   gameId: string;
 };
+
+type MenuLink = {
+  title: string;
+  href: string;
+};
