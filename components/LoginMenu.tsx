@@ -1,29 +1,30 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useContext } from 'react';
+
 import useToggle from '@/hooks/useToggle';
 import { Button } from '@/components/Button';
+import { LoginContext, LoginContextType } from '@/pages/_app';
 import MyMenu from './MyMenu';
 import { MyMenuDropdown } from './Dropdown';
-import { useContext } from 'react';
-import { LoginContext, LoginContextType } from '@/pages/_app';
 
 const LoginMenu = () => {
   const { isLogin, toggleIsLogin } = useContext(
     LoginContext,
   ) as LoginContextType;
   const [menuOpen, toggleMenuOpen] = useToggle();
+  const router = useRouter();
 
-  const onLogout = () => {
-    toggleIsLogin();
-    toggleMenuOpen();
-  };
+  useEffect(() => {
+    if (menuOpen) toggleMenuOpen();
+  }, [router]);
 
   const menuItems = [
     {
       title: '내정보',
       href: '/myinfo',
-      onClick: toggleMenuOpen,
     },
-    { title: '로그아웃', href: '/', onClick: onLogout },
+    { title: '로그아웃', href: '/', onClick: toggleIsLogin },
   ];
 
   return isLogin ? (
