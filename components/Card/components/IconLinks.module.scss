@@ -1,24 +1,25 @@
 .container {
-  display: flex;
+  display:flex;
+  gap: 0.25rem;
 }
 
-.kakaoLink {
-  margin-right: 0.25rem;
-  padding: 0.125rem 0.1875rem;
+.linkContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50px;
+}
+
+.kakao {
   background-color: #faec2e;
   font-size: 1.125rem;
-  height: 1.25rem;
   color: black;
-  line-height: 1.4375rem;
 }
 
-.discordLink {
-  padding: 0.125rem 0.25rem;
-  border-radius: 50px;
+.discord {
   background-color: #5865f2;
   font-size: 1rem;
-  height: 1.25rem;
   color: white;
-  line-height: 1.375rem;
 }
