@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import Image from 'next/image';
 import { RiArrowDownSFill, RiArrowUpSFill } from 'react-icons/ri';
-import useToggle from '@/hooks/useToggle';
 import styles from './MyMenu.module.scss';
 
 const Avatar = memo(() => (
@@ -17,14 +16,18 @@ const Avatar = memo(() => (
 
 Avatar.displayName = 'Avatar';
 
-const MyMenu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useToggle();
-
+const MyMenu = ({
+  open,
+  toggleOpen,
+}: {
+  open: boolean;
+  toggleOpen: () => void;
+}) => {
   return (
-    <div className={styles.myMenu} onClick={setIsMenuOpen}>
+    <div className={styles.myMenu} onClick={toggleOpen}>
       <Avatar />
       <div className={styles.icon}>
-        {isMenuOpen ? <RiArrowUpSFill /> : <RiArrowDownSFill />}
+        {open ? <RiArrowUpSFill /> : <RiArrowDownSFill />}
       </div>
     </div>
   );
