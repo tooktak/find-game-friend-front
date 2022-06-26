@@ -13,4 +13,5 @@ type FindMatePost = {
 type MenuLink = {
   title: string;
   href: string;
+  onClick?: () => void;
 };
