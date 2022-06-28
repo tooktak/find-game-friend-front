@@ -1,5 +1,5 @@
-import FindMatePostCard from '@/components/FindMatePostCard';
-import GridLayout from '@/components/GridLayout';
+import { FindMatePostCard } from '@/components/Card';
+import { GridLayout } from '@/components/Layout';
 import Main from '@/components/Main';
 import { useQuery } from 'react-query';
 import { QueryKeys } from '@/libs/client';

@@ -1,10 +1,10 @@
 import Header from '@/components/Header';
-import HeaderRight from '@/components/HeaderRight';
+import LoginMenu from '@/components/LoginMenu';
 import Logo from '@/components/Logo';
 import Search from '@/components/Search';
 
 const HeaderLayout = () => {
-  return <Header left={<Logo />} center={<Search />} right={<HeaderRight />} />;
+  return <Header left={<Logo />} center={<Search />} right={<LoginMenu />} />;
 };
 
 export default HeaderLayout;
