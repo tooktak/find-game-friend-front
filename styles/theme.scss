@@ -19,3 +19,26 @@ $disabled: $gray-300;
 $title-text: $gray-100;
 $content-text: $gray-200;
 $hashtag-text: $gray-300;
+
+$skeleton-color: rgba(0, 0, 0, 0.20);
+
+
+@keyframes move {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin animation ($name, $delay, $duration) {
+  animation-name: $name;
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
