@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 import Thumbnail from './Thumbnail';
 import Title from './Title';
 import Hashtag, { HashtagContainer } from './Hashtag';
-import IconLinks from './IconLinks';
+import IconLinks, { IconLinksContainer } from './IconLinks';
 import Description, { DescriptionContainer } from './Description';
 import ContentHeader from './ContentHeader';
 import Content from './Content';
@@ -20,6 +20,7 @@ Card.DescriptionContainer = DescriptionContainer;
 Card.Hashtag = Hashtag;
 Card.HashtagContainer = HashtagContainer;
 Card.IconLinks = IconLinks;
+Card.IconLinksContainer = IconLinksContainer;
 Card.ContentHeader = ContentHeader;
 Card.Content = Content;
 
