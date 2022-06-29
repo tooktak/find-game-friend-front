@@ -1,0 +1,21 @@
+@import '@/styles/theme.scss';
+
+.text {
+  display: block;
+  background-color: $skeleton-color;
+  width: 100%;
+  @include animation(move, 1.5s, 2.5s);
+  &::before {
+    // "\00a0" => no break whitespace 줄 바꿈 없는 공백
+    content: "\00a0";
+  }
+}
+.small {
+  font-size: 0.75rem;
+}
+.medium {
+  font-size: 0.875rem;
+}
+.large {
+  font-size: 1rem;
+}

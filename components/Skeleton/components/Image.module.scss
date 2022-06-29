@@ -1,0 +1,11 @@
+@import '@/styles/theme.scss';
+
+.image {
+  display: block;
+  background-color: $skeleton-color;
+  @include animation(move, 1.5s, 2.5s);
+}
+
+.thumbnail {
+  padding: 30% 0px 0px;
+}
