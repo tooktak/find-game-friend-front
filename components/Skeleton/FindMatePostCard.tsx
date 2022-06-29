@@ -8,12 +8,12 @@ const FindMatePostCard = () => {
       <Card.Content>
         <Skeleton.Text size="large" />
         <Card.DescriptionContainer>
-          <Skeleton.Text />
-          <Skeleton.Text />
+          <Skeleton.Text width="threeQuarter" />
+          <Skeleton.Text width="half" />
           <Skeleton.Text />
         </Card.DescriptionContainer>
         <Card.HashtagContainer>
-          <Skeleton.Text size="small" />
+          <Skeleton.Text size="small" width="threeQuarter" />
         </Card.HashtagContainer>
       </Card.Content>
     </Card>

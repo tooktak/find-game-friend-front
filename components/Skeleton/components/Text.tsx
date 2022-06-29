@@ -1,8 +1,14 @@
 import styles from './Text.module.scss';
 import cx from '@/styles/cx';
 
-const Text = ({ size = 'medium' }: { size?: string }) => {
-  const classNames = cx(styles)('text', size);
+const Text = ({
+  size = 'medium',
+  width = 'full',
+}: {
+  size?: 'small' | 'medium' | 'large';
+  width?: 'full' | 'threeQuarter' | 'half' | 'quarter';
+}) => {
+  const classNames = cx(styles)('text', size, width);
   return <span className={classNames} />;
 };
 
