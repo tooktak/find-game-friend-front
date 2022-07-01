@@ -5,7 +5,7 @@
   position: absolute;
   top: 0;
   border-radius: 3px;
-  border: $gray-800 solid 1px;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 20%);
   & li {    
     padding: 0.5rem 0;
     color: $secondary;
@@ -17,21 +17,5 @@
   }
   & li:hover {
     background-color: $gray-900;
-  }
-}
-
-.container {
-  display: flex;
-  margin-top: 0.375rem;
-  flex-wrap: wrap;
-}
-
-.hashtag {
-  margin-right: 0.125rem;
-  color: $hashtag-text;
-  font-family: 'Gugi', cursive;
-  font-size: 0.75rem;
-  &:before {
-    content: '#';
   }
 }

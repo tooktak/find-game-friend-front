@@ -2,14 +2,32 @@ import { FindMatePostCard } from '@/components/Card';
 import { GridLayout } from '@/components/Layout';
 import Main from '@/components/Main';
 import { useQuery } from 'react-query';
+import { AxiosError } from 'axios';
 import { QueryKeys } from '@/libs/client';
 import findMatePostService from '@/services/findMatePost';
+import { FindMatePostCard as Skeleton } from '@/components/Skeleton';
 
 const CardLayout = () => {
-  const { data } = useQuery<FindMatePost[]>(
-    QueryKeys.FIND_MATE_POST,
-    findMatePostService.findAll,
-  );
+  const { isLoading, isError, data, error } = useQuery<
+    FindMatePost[],
+    AxiosError
+  >(QueryKeys.FIND_MATE_POST, findMatePostService.findAll);
+
+  if (isLoading) {
+    return (
+      <Main>
+        <GridLayout>
+          {new Array(16).fill(0).map((_, i) => (
+            <Skeleton key={i} />
+          ))}
+        </GridLayout>
+      </Main>
+    );
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
 
   return (
     <Main>

@@ -1,0 +1,40 @@
+@import '@/styles/theme.scss';
+
+.text {
+  display: block;
+  background-color: $skeleton-color;
+  width: 100%;
+  border-radius: 0.25rem;
+  @include animation(move, 1.5s, 2.5s);
+  &::before {
+    // "\00a0" => no break whitespace 줄 바꿈 없는 공백
+    content: "\00a0";
+  }
+}
+
+.small {
+  font-size: 0.75rem;
+}
+.medium {
+  font-size: 0.875rem;
+}
+.large {
+  font-size: 1rem;
+}
+
+.small, .icon {
+  width: 0.75rem;
+}
+
+.full {
+  width: 100%;
+}
+.threeQuarter {
+  width: 75%;
+}
+.half {
+  width: 50%;
+}
+.quarter {
+  width: 25%;
+}

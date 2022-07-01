@@ -1,0 +1,18 @@
+@import '@/styles/theme.scss';
+
+.icon {
+  display: block;
+  background-color: $skeleton-color;
+  width: 100%;
+  border-radius: 50px;
+  @include animation(move, 1.5s, 2.5s);
+  &::before {
+    // "\00a0" => no break whitespace 줄 바꿈 없는 공백
+    content: "\00a0";
+  }
+}
+
+.iconLink {
+  width: 1.5rem;
+  height: 1.5rem;
+}

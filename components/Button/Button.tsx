@@ -1,5 +1,6 @@
 import styles from './Button.module.scss';
 import cx from '@/styles/cx';
+import { forwardRef } from 'react';
 
 type Props = {
   children: string;
@@ -10,21 +11,26 @@ type Props = {
   disabled?: boolean;
 };
 
-const Button = ({
-  children,
-  onClick,
-  size = 'medium',
-  color,
-  outline = false,
-  disabled,
-}: Props) => {
-  const classNames = cx(styles)('button', size, color, { outline, disabled });
+const Button = forwardRef<HTMLButtonElement, Props>(
+  (
+    { children, onClick, size = 'medium', color, outline = false, disabled },
+    ref,
+  ) => {
+    const classNames = cx(styles)('button', size, color, { outline, disabled });
 
-  return (
-    <button className={classNames} onClick={onClick} disabled={disabled}>
-      {children}
-    </button>
-  );
-};
+    return (
+      <button
+        className={classNames}
+        onClick={onClick}
+        disabled={disabled}
+        ref={ref}
+      >
+        {children}
+      </button>
+    );
+  },
+);
+
+Button.displayName = 'Button';
 
 export default Button;
