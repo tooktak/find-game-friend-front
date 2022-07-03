@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useCallback } from 'react';
 
 import useToggle from '@/hooks/useToggle';
 import { Button } from '@/components/Button';
@@ -14,6 +14,10 @@ const LoginMenu = () => {
   ) as LoginContextType;
   const [menuOpen, toggleMenuOpen] = useToggle();
   const router = useRouter();
+
+  const handleMenuClose = useCallback(() => {
+    if (menuOpen) toggleMenuOpen(false);
+  }, [menuOpen]);
 
   useEffect(() => {
     if (menuOpen) toggleMenuOpen();
@@ -30,6 +34,7 @@ const LoginMenu = () => {
   return isLogin ? (
     <MyMenuDropdown
       open={menuOpen}
+      menuClose={handleMenuClose}
       trigger={<MyMenu open={menuOpen} toggleOpen={toggleMenuOpen} />}
       menuItems={menuItems}
     />
