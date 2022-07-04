@@ -10,6 +10,20 @@ type FindMatePost = {
   gameId: string;
 };
 
+type Member = {
+  id: string;
+  memberId: string;
+  password: string;
+  email: string;
+  nickname: string;
+  pictureURL: string;
+
+  name: string;
+  address: string;
+  gender: string;
+  age: string;
+};
+
 type MenuLink = {
   title: string;
   href: string;
