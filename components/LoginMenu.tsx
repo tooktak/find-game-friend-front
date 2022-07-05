@@ -9,7 +9,7 @@ import MyMenu from './MyMenu';
 import { MyMenuDropdown } from './Dropdown';
 
 const LoginMenu = () => {
-  const { isLogin, toggleIsLogin } = useContext(
+  const { isLogin, toggleIsLogin, setUserInfo } = useContext(
     LoginContext,
   ) as LoginContextType;
   const [menuOpen, toggleMenuOpen] = useToggle();
@@ -19,8 +19,13 @@ const LoginMenu = () => {
     if (menuOpen) toggleMenuOpen(false);
   }, [menuOpen]);
 
+  const onLogout = useCallback(() => {
+    toggleIsLogin(false);
+    setUserInfo('');
+  }, [toggleIsLogin]);
+
   useEffect(() => {
-    if (menuOpen) toggleMenuOpen();
+    if (menuOpen) toggleMenuOpen(false);
   }, [router]);
 
   const menuItems = [
@@ -28,7 +33,7 @@ const LoginMenu = () => {
       title: '내정보',
       href: '/myinfo',
     },
-    { title: '로그아웃', href: '/', onClick: toggleIsLogin },
+    { title: '로그아웃', href: '/', onClick: onLogout },
   ];
 
   return isLogin ? (

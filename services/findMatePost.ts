@@ -1,12 +1,12 @@
 import fetcher from '@/libs/fetcher';
 
 const findAll = async () => {
-  const response = await fetcher.get<FindMatePost[]>('/findMatePost');
+  const response = await fetcher.get<FindMatePost[]>('/find-mate-post');
   return response.data;
 };
 
 const findById = async (id: string) => {
-  const response = await fetcher.get<FindMatePost>(`/findMatePost/${id}`);
+  const response = await fetcher.get<FindMatePost>(`/find-mate-post/${id}`);
   return response.data;
 };
 
@@ -19,7 +19,7 @@ const create = async ({
   memberId,
   gameId,
 }: FindMatePost) => {
-  const response = await fetcher.post<string>('/findMatePost', {
+  const response = await fetcher.post<string>('/find-mate-post', {
     title,
     contents,
     hashtag,
@@ -35,7 +35,7 @@ const update = async (
   id: string,
   { title, contents, hashtag, kakaoLink, discordLink, gameId }: FindMatePost,
 ) => {
-  const response = await fetcher.put<string>(`/findMatePost/${id}`, {
+  const response = await fetcher.put<string>(`/find-mate-post/${id}`, {
     title,
     contents,
     hashtag,
@@ -47,11 +47,11 @@ const update = async (
 };
 
 const remove = async (id: string) => {
-  const response = await fetcher.delete<string>(`/findMatePost/${id}`);
+  const response = await fetcher.delete<string>(`/find-mate-post/${id}`);
   return response.data;
 };
 
-const findMatePostService = {
+const findMatePost = {
   findAll,
   findById,
   create,
@@ -59,4 +59,4 @@ const findMatePostService = {
   remove,
 };
 
-export default findMatePostService;
+export default findMatePost;
