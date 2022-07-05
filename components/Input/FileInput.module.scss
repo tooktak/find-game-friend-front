@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 4px 8px;
+  border: 1px solid rgba(0, 0, 0, 0.3);    
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.input {
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: calc(100% - 1rem - 2px);
+  opacity: 0;
+  // font-size: 1rem;
+  // line-height: 1.5;
+  // padding: 0.25rem 0.5rem;
+  // width: calc(100% - 1rem);
+}
+
