@@ -5,21 +5,37 @@ import { forwardRef } from 'react';
 type Props = {
   children: string;
   onClick?: () => void;
+  type?: 'submit';
   size?: 'large' | 'medium' | 'small';
   color?: 'main' | 'sub' | 'tag';
+  rounded?: boolean;
   outline?: boolean;
   disabled?: boolean;
 };
 
 const Button = forwardRef<HTMLButtonElement, Props>(
   (
-    { children, onClick, size = 'medium', color, outline = false, disabled },
+    {
+      children,
+      onClick,
+      type,
+      size = 'medium',
+      color,
+      rounded = true,
+      outline = false,
+      disabled,
+    },
     ref,
   ) => {
-    const classNames = cx(styles)('button', size, color, { outline, disabled });
+    const classNames = cx(styles)('button', size, color, {
+      rounded,
+      outline,
+      disabled,
+    });
 
     return (
       <button
+        type={type}
         className={classNames}
         onClick={onClick}
         disabled={disabled}

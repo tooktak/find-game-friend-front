@@ -2,6 +2,7 @@
 
 .button {
   display: inline-flex;
+  justify-content: center;
   color: white;
   height: 1.75rem;
   font-size: 0.875rem;
@@ -9,7 +10,7 @@
   padding-right: 1.25rem;
   outline: none;
   font-size: 1rem;
-  border-radius: 50px;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   align-items: center;
@@ -33,6 +34,10 @@
       background: $secondary;
       color: white;
     }
+  }
+
+  &.rounded {
+    border-radius: 50px;
   }
 
   &.large {
