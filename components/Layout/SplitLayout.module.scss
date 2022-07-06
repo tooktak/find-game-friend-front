@@ -1,0 +1,42 @@
+@import '@/styles/media.scss';
+
+.layout {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  margin: auto;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 3;
+}
+
+
+@include desktop {
+  .layout {
+    max-width: $desktop-layout;
+    flex-direction: row;
+  }
+}
+
+@include desktop-hd {
+  .layout {
+    max-width: $desktop-hd-layout;
+  }
+}
+
+@include desktop-fhd {
+  .layout {
+    max-width: $desktop-fhd-layout;
+  }
+}
+
+@include desktop-qhd {
+  .layout {
+    max-width: $desktop-qhd-layout;
+  }
+}
