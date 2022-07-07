@@ -1,5 +1,11 @@
 @import '@/styles/theme.scss';
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .menu {
   list-style: none;
   display: flex;

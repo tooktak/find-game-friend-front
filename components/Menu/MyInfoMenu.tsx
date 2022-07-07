@@ -17,27 +17,17 @@ const MyInfoMenuItem = ({ href, title }: MyInfoMenuItemProps) => {
 };
 
 const MyInfoMenu = () => {
-  const menu = [
-    {
-      href: '/myinfo',
-      title: '내 정보',
-    },
-    {
-      href: '/mypost',
-      title: '내 글 보기',
-    },
-    {
-      href: '/mydelete',
-      title: '탈퇴',
-    },
-  ];
-
   return (
-    <ul className={styles.menu}>
-      {menu.map(({ href, title }) => (
-        <MyInfoMenuItem key={href} href={href} title={title} />
-      ))}
-    </ul>
+    <div className={styles.wrapper}>
+      <ul className={styles.menu}>
+        <MyInfoMenuItem href="/mypost" title="내 글 보기" />
+      </ul>
+      <ul className={styles.menu}>
+        <MyInfoMenuItem href="/myinfo" title="내 정보" />
+        <MyInfoMenuItem href="/mypassword" title="비밀번호 변경" />
+        <MyInfoMenuItem href="/mydelete" title="탈퇴" />
+      </ul>
+    </div>
   );
 };
 
