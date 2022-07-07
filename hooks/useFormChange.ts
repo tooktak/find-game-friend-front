@@ -11,7 +11,7 @@ function useFormChange<T>(initialState: T) {
     }));
   }, []);
 
-  return [form, onChange] as const;
+  return [form, onChange, setForm] as const;
 }
 
 export default useFormChange;

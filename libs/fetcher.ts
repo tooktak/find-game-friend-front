@@ -8,7 +8,9 @@ const fetcher = axios.create({
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': BASE_URL,
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
   },
+  withCredentials: true,
 });
 
 // const create = async ({ title, description }: FindMatePost) => {

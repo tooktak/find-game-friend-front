@@ -1,27 +1,44 @@
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useCallback, useContext } from 'react';
+import { useMutation } from 'react-query';
+
+import { LoginContext, LoginContextType } from '@/pages/_app';
 import { FileInput } from '@/components/Input';
+import { Button } from '@/components/Button';
+import memberService from '@/services/member';
+
 import styles from './MyPictureURLForm.module.scss';
-import { Button } from '../Button';
 
-const MyPictureURLForm = () => {
-  const [pictureURL, setPictureURL] = useState('');
-  const [memberId, setMemberId] = useState('');
+type MyPictureURLFormProps = {
+  memberId: string;
+  pictureURL: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
 
-  const onChangePictureURL = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const { value } = e.target;
-      setPictureURL(value);
+const MyPictureURLForm = ({
+  memberId,
+  pictureURL,
+  onChange,
+}: MyPictureURLFormProps) => {
+  const { userInfo } = useContext(LoginContext) as LoginContextType;
+  const { id } = userInfo;
+
+  const { mutate, isLoading } = useMutation(memberService.updatePicture, {
+    onSuccess: data => {
+      console.log(data);
     },
-    [],
+  });
+
+  const onSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      mutate({ id, pictureURL });
+    },
+    [mutate, id, pictureURL],
   );
 
-  useEffect(() => {
-    setMemberId('asdfg12345');
-  }, []);
-
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div className={styles.container}>
         <div className={styles.image}>
           <Image
@@ -40,13 +57,13 @@ const MyPictureURLForm = () => {
                 name="pictureURL"
                 label="사진 바꾸기"
                 value={pictureURL}
-                onChange={onChangePictureURL}
+                onChange={onChange}
               />
             </div>
             <Button
               size="large"
               color="main"
-              disabled={pictureURL ? false : true}
+              disabled={pictureURL || isLoading ? false : true}
             >
               수정
             </Button>

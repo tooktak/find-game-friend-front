@@ -10,4 +10,5 @@ export const getClient = (() => {
 
 export const QueryKeys = {
   FIND_MATE_POST: 'FIND_MATE_POST',
+  MEMBER: 'MEMBER',
 };
