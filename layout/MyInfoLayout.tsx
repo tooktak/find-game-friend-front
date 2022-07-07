@@ -1,7 +1,8 @@
-import MyInfoForm from '@/components/Form/MyInfoForm';
+import { MyInfoForm, MyPictureURLForm } from '@/components/Form';
 
 import { SplitLayout } from '@/components/Layout';
 import Main from '@/components/Main';
+import Link from 'next/link';
 
 const MyInfoLayout = () => {
   return (
@@ -10,14 +11,21 @@ const MyInfoLayout = () => {
         left={
           <>
             <ul>
-              <li>내 정보</li>
-              <li>내 글 보기</li>
-              <li>탈퇴</li>
+              <li>
+                <Link href="myinfo">내 정보</Link>
+              </li>
+              <li>
+                <Link href="mypost">내 글 보기</Link>
+              </li>
+              <li>
+                <Link href="delete">탈퇴</Link>
+              </li>
             </ul>
           </>
         }
         right={
           <>
+            <MyPictureURLForm />
             <MyInfoForm />
           </>
         }
