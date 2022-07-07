@@ -8,8 +8,9 @@
 }
 
 .label {
+  display: none;
   flex: 1;
-  text-align: start;
+  text-align: end;
 }
 
 .input {
@@ -31,7 +32,6 @@
   }
 
   .label {
-    flex: 1;
-    text-align: end;
+    display: block;
   }
 }

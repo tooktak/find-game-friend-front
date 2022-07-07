@@ -11,7 +11,7 @@ const MyInfoFormItem = ({
 }: TextInputProps) => {
   return (
     <section className={styles.container}>
-      <label className={styles.label}>{name}</label>
+      <label className={styles.label}>{placeholder}</label>
       <div className={styles.input}>
         <TextInput
           name={name}
