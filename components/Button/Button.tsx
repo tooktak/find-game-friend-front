@@ -21,7 +21,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       type,
       size = 'medium',
       color,
-      rounded = true,
+      rounded = false,
       outline = false,
       disabled,
     },

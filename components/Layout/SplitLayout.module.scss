@@ -15,11 +15,15 @@
   flex: 3;
 }
 
+@include tablet {
+  .layout {
+    flex-direction: row;
+  }
+}
 
 @include desktop {
   .layout {
     max-width: $desktop-layout;
-    flex-direction: row;
   }
 }
 
