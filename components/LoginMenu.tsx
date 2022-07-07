@@ -21,7 +21,7 @@ const LoginMenu = () => {
 
   const onLogout = useCallback(() => {
     toggleIsLogin(false);
-    setUserInfo('');
+    setUserInfo({ id: '' });
   }, [toggleIsLogin]);
 
   useEffect(() => {

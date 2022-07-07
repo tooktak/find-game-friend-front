@@ -18,7 +18,7 @@ export type LoginContextType = {
   isLogin: boolean;
   toggleIsLogin: (state?: boolean) => void;
   userInfo: Member | DefaultUserInfo;
-  setUserInfo: (data: Member) => void;
+  setUserInfo: (data: Member | DefaultUserInfo) => void;
 };
 
 export const LoginContext = createContext<LoginContextType | null>(null);
