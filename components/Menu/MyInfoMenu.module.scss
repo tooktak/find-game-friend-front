@@ -1,0 +1,26 @@
+@import '@/styles/theme.scss';
+
+.menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  border: 1px rgba(0,0,0,0.1) solid;
+  border-radius: 3px;
+  overflow: hidden;
+  & a {
+    display: block;
+    padding: 12px;
+    color: $menu-text;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+
+}
+
+.active > a {
+  border-left: 3px $menu-active-text solid;
+  padding-left: calc(12px - 3px);
+  padding-right: calc(12px + 3px);
+  color: $menu-active-text;
+  font-weight: bold;
+}
