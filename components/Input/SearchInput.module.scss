@@ -1,0 +1,46 @@
+@import '@/styles/theme.scss';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 1rem;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 50px;
+  overflow: hidden;
+  transition: border .5s ease, background-color .3s ease;
+  &:focus-within {
+    border-color: lighten($primary, 10%);
+    background-color: rgba($primary, 0.05);
+  }
+}
+
+.input {
+  border: none;
+  margin: 0;
+  width: 150px;
+  max-width: 150px;
+  font-size: 0.875rem;
+  flex: 1;
+  outline: none;
+  background-color: transparent;
+  &:focus + .icon {
+    color: lighten($primary, 10%);
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  color: $secondary;
+  font-size: 1.25rem;
+  transition: color .3s ease, background-color .3s ease;
+  border-radius: 50px;
+  cursor: pointer;
+  &:hover {
+    color: lighten($primary, 10%);
+    background-color: rgba($primary, 0.1);
+  }
+}
