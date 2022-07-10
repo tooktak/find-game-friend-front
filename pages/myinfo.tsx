@@ -1,5 +1,7 @@
+import MyInfoLayout from '@/layout/MyInfoLayout';
+
 const MyInfo = () => {
-  return <div>내정보</div>;
+  return <MyInfoLayout />;
 };
 
 export default MyInfo;

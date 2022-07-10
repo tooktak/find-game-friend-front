@@ -1,0 +1,64 @@
+@import '@/styles/media.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  margin-top: 16px;
+  & span {
+    border-radius: 50px;
+    overflow: hidden;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+  flex: 3;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  flex: 3 1;
+  margin-top: 16px;
+}
+
+.input {
+  flex-grow: 1;
+}
+
+@include tablet {
+  .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
+  .image {
+    justify-content: flex-end;
+    flex: 1;
+    margin-top: 0;
+  }
+
+  .title {
+    text-align: left;
+    margin-top: 0;
+  }
+}

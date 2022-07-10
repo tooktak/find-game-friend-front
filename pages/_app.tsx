@@ -10,11 +10,15 @@ import { getClient } from '@/libs/client';
 
 import '@/styles/globals.scss';
 
+type DefaultUserInfo = {
+  id: '';
+};
+
 export type LoginContextType = {
   isLogin: boolean;
   toggleIsLogin: (state?: boolean) => void;
-  userInfo: Member | '';
-  setUserInfo: (data: Member | '') => void;
+  userInfo: Member | DefaultUserInfo;
+  setUserInfo: (data: Member | DefaultUserInfo) => void;
 };
 
 export const LoginContext = createContext<LoginContextType | null>(null);
@@ -22,7 +26,10 @@ export const LoginContext = createContext<LoginContextType | null>(null);
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = getClient();
   const [isLogin, toggleIsLogin] = useToggle();
-  const [userInfo, setUserInfo] = useLocalStorage<Member | ''>('userInfo', '');
+  const [userInfo, setUserInfo] = useLocalStorage<Member | DefaultUserInfo>(
+    'userInfo',
+    { id: '' },
+  );
 
   useEffect(() => {
     if (
