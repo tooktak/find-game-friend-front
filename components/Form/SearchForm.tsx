@@ -7,7 +7,7 @@ const SearchForm = () => {
   const searchCategory = [
     { value: 'title', description: '제목' },
     { value: 'game', description: '게임' },
-    { value: 'tag', description: '태그' },
+    { value: 'hashtag', description: '태그' },
     { value: 'contents', description: '내용' },
   ];
 
@@ -21,7 +21,7 @@ const SearchForm = () => {
   const handleSearchRouter = () => {
     if (keyword) {
       router.push({
-        pathname: '/',
+        pathname: '/search',
         query: {
           category,
           keyword,
