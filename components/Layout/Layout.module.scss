@@ -2,5 +2,37 @@
 
 .layout {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  margin: auto;
+  padding-top: 1rem;
+}
+
+@include tablet {
+  .layout {
+    flex-direction: row;
+  }
+}
+
+@include desktop {
+  .layout {
+    max-width: $desktop-layout;
+  }
+}
+
+@include desktop-hd {
+  .layout {
+    max-width: $desktop-hd-layout;
+  }
+}
+
+@include desktop-fhd {
+  .layout {
+    max-width: $desktop-fhd-layout;
+  }
+}
+
+@include desktop-qhd {
+  .layout {
+    max-width: $desktop-qhd-layout;
+  }
 }

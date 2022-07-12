@@ -2,12 +2,12 @@
 
 .main {
   padding: 0 1rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 @include desktop {
   .main {
     padding: 0;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 }
