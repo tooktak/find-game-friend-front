@@ -7,9 +7,10 @@ import findMatePostService from '@/services/findMatePost';
 
 import Main from '@/components/Main';
 import { FindMatePostCard } from '@/components/Card';
-import { GridLayout, Layout } from '@/components/Layout';
+import { GridLayout, Layout, MobileOnlyLayout } from '@/components/Layout';
 import { FindMatePostCard as Skeleton } from '@/components/Skeleton';
 import { SearchResult, SearchNotFound } from '@/components/Search';
+import SearchForm from '@/components/Form/SearchForm';
 
 const SearchLayout = () => {
   const { query } = useRouter();
@@ -55,6 +56,9 @@ const SearchLayout = () => {
 
   return (
     <Main>
+      <MobileOnlyLayout>
+        <SearchForm />
+      </MobileOnlyLayout>
       {data && data.length ? (
         <>
           <Layout>

@@ -1,11 +1,12 @@
 import { FindMatePostCard } from '@/components/Card';
-import { GridLayout } from '@/components/Layout';
+import { GridLayout, MobileOnlyLayout } from '@/components/Layout';
 import Main from '@/components/Main';
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
 import { QueryKeys } from '@/libs/client';
 import findMatePostService from '@/services/findMatePost';
 import { FindMatePostCard as Skeleton } from '@/components/Skeleton';
+import SearchForm from '@/components/Form/SearchForm';
 
 const CardLayout = () => {
   const { isLoading, isError, data, error } = useQuery<
@@ -31,6 +32,9 @@ const CardLayout = () => {
 
   return (
     <Main>
+      <MobileOnlyLayout>
+        <SearchForm />
+      </MobileOnlyLayout>
       <GridLayout>
         {data && data.length
           ? data.map(e => (
