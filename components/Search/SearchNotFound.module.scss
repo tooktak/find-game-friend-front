@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.emoticon {
+  margin-top: 12rem;
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.comment {
+  margin-top: 2rem;
+  font-size: 1.75rem;
+}

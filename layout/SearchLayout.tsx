@@ -9,6 +9,7 @@ import Main from '@/components/Main';
 import { FindMatePostCard } from '@/components/Card';
 import { GridLayout, Layout } from '@/components/Layout';
 import { FindMatePostCard as Skeleton } from '@/components/Skeleton';
+import { SearchResult, SearchNotFound } from '@/components/Search';
 
 const SearchLayout = () => {
   const { query } = useRouter();
@@ -54,12 +55,13 @@ const SearchLayout = () => {
 
   return (
     <Main>
-      <Layout>
-        <span>검색 결과가 없어요....... (´。＿。｀)</span>
-      </Layout>
-      <GridLayout>
-        {data && data.length
-          ? data.map(e => (
+      {data && data.length ? (
+        <>
+          <Layout>
+            <SearchResult data={data} />
+          </Layout>
+          <GridLayout>
+            {data.map(e => (
               <FindMatePostCard
                 key={e.id}
                 thumbnail="/test3.jpg"
@@ -69,9 +71,14 @@ const SearchLayout = () => {
                 content={e.contents}
                 hashtags={e.hashtag}
               />
-            ))
-          : ''}
-      </GridLayout>
+            ))}
+          </GridLayout>
+        </>
+      ) : (
+        <Layout>
+          <SearchNotFound />
+        </Layout>
+      )}
     </Main>
   );
 };
