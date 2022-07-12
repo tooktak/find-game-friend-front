@@ -1,21 +1,16 @@
 import { ChangeEvent } from 'react';
-import styles from './CategorySelect.module.scss';
+import styles from './index.module.scss';
 
 export type Option = { value: string; description: string };
 
-type CategorySelectProps = {
+type SelectProps = {
   name: string;
   value: string;
   option: Option[];
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const CategorySelect = ({
-  name,
-  value,
-  option,
-  onChange,
-}: CategorySelectProps) => {
+const Select = ({ name, value, option, onChange }: SelectProps) => {
   return (
     <select
       className={styles.select}
@@ -32,4 +27,4 @@ const CategorySelect = ({
   );
 };
 
-export default CategorySelect;
+export default Select;

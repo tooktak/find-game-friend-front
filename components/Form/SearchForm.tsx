@@ -1,7 +1,11 @@
-import { FormEvent } from 'react';
+import { FormEvent, memo } from 'react';
 import { useRouter } from 'next/router';
 import useFormChange from '@/hooks/useFormChange';
-import Search from '@/components/Search';
+import Select from '../Select';
+import { SearchInput } from '../Input';
+import { RiSearchLine } from 'react-icons/ri';
+
+import styles from './SearchForm.module.scss';
 
 const SearchForm = () => {
   const searchCategory = [
@@ -39,15 +43,26 @@ const SearchForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <Search
-        category={category}
-        searchCategory={searchCategory}
-        q={q}
-        onChange={onChange}
-        onClickIcon={handleSearchRouter}
-      />
+      <div className={styles.container}>
+        <Select
+          name="category"
+          value={category}
+          option={searchCategory}
+          onChange={onChange}
+        />
+        <hr className={styles.divide} />
+        <SearchInput
+          placeholder="search..."
+          name="q"
+          value={q}
+          onChange={onChange}
+        />
+        <div className={styles.icon} onClick={handleSearchRouter}>
+          <RiSearchLine />
+        </div>
+      </div>
     </form>
   );
 };
 
-export default SearchForm;
+export default memo(SearchForm);
