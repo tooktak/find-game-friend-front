@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import testData from 'utils/testData';
+import testData from '@/data/testData';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;

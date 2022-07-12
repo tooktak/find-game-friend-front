@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import testData from 'utils/testData';
+import testData from '@/data/testData';
 
 type SearchUrl =
   | 'by-id-page'
