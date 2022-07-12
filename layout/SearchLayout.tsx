@@ -8,7 +8,10 @@ import findMatePostService from '@/services/findMatePost';
 import Main from '@/components/Main';
 import { FindMatePostCard } from '@/components/Card';
 import { GridLayout, Layout, MobileOnlyLayout } from '@/components/Layout';
-import { FindMatePostCard as Skeleton } from '@/components/Skeleton';
+import {
+  FindMatePostCard as SkeletonCard,
+  SearchResult as SkeletonSearchResult,
+} from '@/components/Skeleton';
 import { SearchResult, SearchNotFound } from '@/components/Search';
 import SearchForm from '@/components/Form/SearchForm';
 
@@ -41,9 +44,12 @@ const SearchLayout = () => {
   if (isLoading) {
     return (
       <Main>
+        <Layout>
+          <SkeletonSearchResult />
+        </Layout>
         <GridLayout>
           {new Array(16).fill(0).map((_, i) => (
-            <Skeleton key={i} />
+            <SkeletonCard key={i} />
           ))}
         </GridLayout>
       </Main>
