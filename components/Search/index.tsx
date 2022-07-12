@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 export type SearchProps = {
   searchCategory: Option[];
   category: string;
-  keyword: string;
+  q: string;
   onChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => void;
@@ -17,7 +17,7 @@ export type SearchProps = {
 const Search = ({
   searchCategory,
   category,
-  keyword,
+  q,
   onChange,
   onClickIcon,
 }: SearchProps) => {
@@ -32,8 +32,8 @@ const Search = ({
       <hr className={styles.divide} />
       <SearchInput
         placeholder="search..."
-        name="keyword"
-        value={keyword}
+        name="q"
+        value={q}
         onChange={onChange}
       />
       <div className={styles.icon} onClick={onClickIcon}>

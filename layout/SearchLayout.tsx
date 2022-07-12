@@ -7,19 +7,19 @@ import findMatePostService from '@/services/findMatePost';
 
 import Main from '@/components/Main';
 import { FindMatePostCard } from '@/components/Card';
-import { GridLayout } from '@/components/Layout';
+import { GridLayout, Layout } from '@/components/Layout';
 import { FindMatePostCard as Skeleton } from '@/components/Skeleton';
 
 const SearchLayout = () => {
   const { query } = useRouter();
   const {
     category = 'title',
-    keyword = '',
+    q = '',
     page = '0',
     size = '10',
   } = query as {
-    category: 'title' | 'gameId' | 'game' | 'hashtag' | 'contents';
-    keyword: string;
+    category: SearchCategory;
+    q: string;
     page: string;
     size: string;
   };
@@ -27,10 +27,10 @@ const SearchLayout = () => {
   const { isLoading, isError, data, error } = useQuery<
     FindMatePost[],
     AxiosError
-  >([QueryKeys.FIND_MATE_POST, category, keyword, page, size], () =>
+  >([QueryKeys.FIND_MATE_POST, category, q, page, size], () =>
     findMatePostService.search({
       category,
-      keyword,
+      q,
       page,
       size,
     }),
@@ -54,6 +54,9 @@ const SearchLayout = () => {
 
   return (
     <Main>
+      <Layout>
+        <span>검색 결과가 없어요....... (´。＿。｀)</span>
+      </Layout>
       <GridLayout>
         {data && data.length
           ? data.map(e => (
@@ -67,7 +70,7 @@ const SearchLayout = () => {
                 hashtags={e.hashtag}
               />
             ))
-          : '데이터 없음'}
+          : ''}
       </GridLayout>
     </Main>
   );

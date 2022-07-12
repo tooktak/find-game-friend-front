@@ -13,18 +13,18 @@ const SearchForm = () => {
 
   const router = useRouter();
   const [form, onChange] = useFormChange({
-    keyword: '',
+    q: '',
     category: searchCategory[0].value,
   });
-  const { keyword, category } = form;
+  const { q, category } = form;
 
   const handleSearchRouter = () => {
-    if (keyword) {
+    if (q) {
       router.push({
         pathname: '/search',
         query: {
           category,
-          keyword,
+          q,
         },
       });
       return;
@@ -42,7 +42,7 @@ const SearchForm = () => {
       <Search
         category={category}
         searchCategory={searchCategory}
-        keyword={keyword}
+        q={q}
         onChange={onChange}
         onClickIcon={handleSearchRouter}
       />
