@@ -1,21 +1,17 @@
 import Link from 'next/link';
-import { useContext } from 'react';
 import { useMutation } from 'react-query';
 
 import { Layout } from '@/components/Layout';
 import { Button } from '@/components/Button';
-import { LoginContext, LoginContextType } from '@/pages/_app';
+import { useLoginContext } from '@/context/Login';
 import memberService from '@/services/member';
 
 const LoginLayout = () => {
-  const { toggleIsLogin, setUserInfo } = useContext(
-    LoginContext,
-  ) as LoginContextType;
+  const { setUserInfoData } = useLoginContext();
 
   const { mutate, isLoading } = useMutation(memberService.login, {
     onSuccess: data => {
-      toggleIsLogin(true);
-      setUserInfo(data);
+      setUserInfoData(data);
     },
   });
 

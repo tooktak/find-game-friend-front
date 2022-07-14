@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { ChangeEvent, FormEvent, useCallback, useContext } from 'react';
+import { ChangeEvent, FormEvent, useCallback } from 'react';
 import { useMutation } from 'react-query';
 
-import { LoginContext, LoginContextType } from '@/pages/_app';
+import { useLoginContext } from '@/context/Login';
 import { FileInput } from '@/components/Input';
 import { Button } from '@/components/Button';
 import memberService from '@/services/member';
@@ -20,7 +20,7 @@ const MyPictureURLForm = ({
   pictureURL,
   onChange,
 }: MyPictureURLFormProps) => {
-  const { userInfo } = useContext(LoginContext) as LoginContextType;
+  const { userInfo } = useLoginContext();
   const { id } = userInfo;
 
   const { mutate, isLoading } = useMutation(memberService.updatePicture, {
