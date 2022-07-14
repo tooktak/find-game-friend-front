@@ -1,28 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import testData from '@/data/testData';
 
-const members = [
-  {
-    id: '1',
-    memberId: 'asdfasdgasdgsadg',
-    password: '0000',
-    email: 'asdfg32145@google.com',
-    name: '이름1',
-    nickname: 'aaasdfsadfg',
-    pictureURL: 'C:\\fakepath\\test.jpg',
-  },
-  {
-    id: '2',
-    memberId: 'asdfg2',
-    password: '00000',
-    email: 'asdfg32146@google.com',
-    name: '이름2',
-    nickname: 'aaasdfsadfg2',
-    pictureURL: '/test1.jpg',
-  },
-];
-
-const handler = (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
+  const members = await testData.getMembers();
+
   if (req.method === 'PUT') {
     const body = req.body;
     const { email, memberId, nickname } = body;

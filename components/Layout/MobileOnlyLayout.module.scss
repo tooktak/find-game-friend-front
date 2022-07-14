@@ -1,0 +1,11 @@
+@import '@/styles/media.scss';
+
+.layout {
+  display: block;
+}
+
+@include tablet {
+  .layout {
+    display: none;
+  }
+}

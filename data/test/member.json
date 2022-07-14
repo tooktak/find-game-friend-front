@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "memberId": "asdfasdgasdgsadg",
+    "password": "0000",
+    "email": "asdfg32145@google.com",
+    "name": "이름1",
+    "nickname": "aaasdfsadfg",
+    "pictureURL": "C:\\fakepath\\test.jpg"
+  },
+  {
+    "id": "2",
+    "memberId": "asdfg2",
+    "password": "00000",
+    "email": "asdfg32146@google.com",
+    "name": "이름2",
+    "nickname": "aaasdfsadfg2",
+    "pictureURL": "/test1.jpg"
+  },
+  {
+    "id": "3",
+    "memberId": "asdfg3",
+    "password": "1234",
+    "email": "asdfg32147@google.com",
+    "name": "이름3",
+    "nickname": "aaasdfsadfg23",
+    "pictureURL": "/test1.jpg"
+  }
+]

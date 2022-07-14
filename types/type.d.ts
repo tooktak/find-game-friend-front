@@ -10,6 +10,8 @@ type FindMatePost = {
   gameId: string;
 };
 
+type SearchCategory = 'gameId' | 'game' | 'title' | 'hashtag' | 'contents';
+
 type Member = {
   id: string;
   memberId: string;
@@ -28,4 +30,10 @@ type MenuLink = {
   title: string;
   href: string;
   onClick?: () => void;
+};
+
+type Game = {
+  id: string;
+  title: string;
+  thumbnailURL: string;
 };

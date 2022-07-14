@@ -5,7 +5,7 @@ const Text = ({
   size = 'medium',
   width = 'full',
 }: {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'searchResult';
   width?: 'full' | 'threeQuarter' | 'half' | 'quarter';
 }) => {
   const classNames = cx(styles)('text', size, width);
