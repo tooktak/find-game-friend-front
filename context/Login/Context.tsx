@@ -1,0 +1,55 @@
+import { createContext, ReactNode, useEffect } from 'react';
+
+import useToggle from '@/hooks/useToggle';
+import useLocalStorage from '@/hooks/useLocalStorage';
+
+type DefaultUserInfo = {
+  id: '';
+};
+
+type LoginContextType = {
+  isLogin: boolean;
+  userInfo: Member | DefaultUserInfo;
+  setUserInfoData: (data: Member) => void;
+  setUserInfoLogout: () => void;
+};
+
+export const LoginContext = createContext<LoginContextType | null>(null);
+
+const LoginProvider = ({ children }: { children: ReactNode }) => {
+  const [isLogin, toggleIsLogin] = useToggle();
+  const [userInfo, setUserInfo] = useLocalStorage<Member | DefaultUserInfo>(
+    'userInfo',
+    { id: '' },
+  );
+
+  const setUserInfoData = (data: Member) => {
+    toggleIsLogin(true);
+    setUserInfo(data);
+  };
+
+  const setUserInfoLogout = () => {
+    toggleIsLogin(false);
+    setUserInfo({ id: '' });
+  };
+
+  useEffect(() => {
+    if (
+      typeof userInfo === 'object' &&
+      !Array.isArray(userInfo) &&
+      userInfo !== null
+    ) {
+      toggleIsLogin(true);
+    }
+  }, []);
+
+  return (
+    <LoginContext.Provider
+      value={{ isLogin, userInfo, setUserInfoData, setUserInfoLogout }}
+    >
+      {children}
+    </LoginContext.Provider>
+  );
+};
+
+export default LoginProvider;
