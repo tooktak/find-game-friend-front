@@ -15,15 +15,15 @@ const LoginMenu = () => {
 
   const handleMenuClose = useCallback(() => {
     if (menuOpen) toggleMenuOpen(false);
-  }, [menuOpen]);
+  }, [menuOpen, toggleMenuOpen]);
 
   const onLogout = useCallback(() => {
     setUserInfoLogout();
   }, [setUserInfoLogout]);
 
   useEffect(() => {
-    if (menuOpen) handleMenuClose();
-  }, [router]);
+    toggleMenuOpen(false);
+  }, [router, toggleMenuOpen]);
 
   const menuItems = [
     {

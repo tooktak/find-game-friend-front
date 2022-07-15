@@ -1,6 +1,7 @@
 import CombineProvider from './CombineProvider';
-import LoginProvider from './Login';
+import SearchProvider from './FindMatePost';
+import Login from './Login';
 
-const providers = [LoginProvider];
+const providers = [Login, SearchProvider];
 
 export const ContextProvider = CombineProvider(providers);

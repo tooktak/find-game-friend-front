@@ -16,7 +16,7 @@ type LoginContextType = {
 
 export const LoginContext = createContext<LoginContextType | null>(null);
 
-const LoginProvider = ({ children }: { children: ReactNode }) => {
+const Login = ({ children }: { children: ReactNode }) => {
   const [isLogin, toggleIsLogin] = useToggle();
   const [userInfo, setUserInfo] = useLocalStorage<Member | DefaultUserInfo>(
     'userInfo',
@@ -35,13 +35,14 @@ const LoginProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (
+      !isLogin &&
       typeof userInfo === 'object' &&
       !Array.isArray(userInfo) &&
       userInfo !== null
     ) {
       toggleIsLogin(true);
     }
-  }, []);
+  }, [isLogin, toggleIsLogin, userInfo]);
 
   return (
     <LoginContext.Provider
@@ -52,4 +53,4 @@ const LoginProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default LoginProvider;
+export default Login;
