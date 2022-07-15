@@ -35,10 +35,9 @@ const Login = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     if (
-      !isLogin &&
       typeof userInfo === 'object' &&
       !Array.isArray(userInfo) &&
-      userInfo !== null
+      userInfo?.id
     ) {
       toggleIsLogin(true);
     }
