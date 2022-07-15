@@ -4,9 +4,10 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 16px;
-  width: 100%;
   margin: auto;
   padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 @include tablet {
@@ -19,6 +20,8 @@
   .grid {
     grid-template-columns: repeat(4, 1fr);
     max-width: $desktop-layout;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
