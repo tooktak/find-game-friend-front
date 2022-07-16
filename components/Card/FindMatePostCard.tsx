@@ -1,7 +1,7 @@
 import Card from './components';
 
 type Props = {
-  thumbnail: string;
+  thumbnail?: string;
   title: string;
   kakaoLink: string;
   discordLink: string;
