@@ -20,12 +20,14 @@ const SearchForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <div className={styles.container}>
-        <Select
-          name="category"
-          value={category}
-          option={searchCategory}
-          onChange={onChange}
-        />
+        <div className={styles.select}>
+          <Select
+            name="category"
+            value={category}
+            option={searchCategory}
+            onChange={onChange}
+          />
+        </div>
         <hr className={styles.divide} />
         <SearchInput
           placeholder="search..."

@@ -1,12 +1,14 @@
 .select {
-  width: 3rem;
+  width: 100%;
   border: none;
   background-color: transparent;
   text-align: center;
+  line-height: 2;
   outline: none;
   appearance: none;
   & option {
     padding: 30px;
     font-size: 0.875rem;
+    line-height: 1.5;
   }
 }
