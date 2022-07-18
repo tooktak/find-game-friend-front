@@ -26,6 +26,7 @@ const SearchForm = () => {
             value={category}
             option={searchCategory}
             onChange={onChange}
+            noOutline
           />
         </div>
         <hr className={styles.divide} />
