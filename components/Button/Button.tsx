@@ -28,7 +28,6 @@ const Button = forwardRef<HTMLButtonElement, Props>(
     ref,
   ) => {
     const classNames = cx(styles)('button', size, color, {
-      rounded,
       outline,
       disabled,
     });
@@ -40,6 +39,9 @@ const Button = forwardRef<HTMLButtonElement, Props>(
         onClick={onClick}
         disabled={disabled}
         ref={ref}
+        style={{
+          borderRadius: rounded ? '50px' : '',
+        }}
       >
         {children}
       </button>

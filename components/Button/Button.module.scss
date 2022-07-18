@@ -30,14 +30,11 @@
     color: $secondary;
     background: none;
     border: 1px solid $secondary;
+    font-weight: bold;
     &:hover {
       background: $secondary;
       color: white;
     }
-  }
-
-  &.rounded {
-    border-radius: 50px;
   }
 
   &.large {
