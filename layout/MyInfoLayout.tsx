@@ -1,8 +1,8 @@
 import { AxiosError } from 'axios';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
-import { LoginContext, LoginContextType } from '@/pages/_app';
+import { useLoginContext } from '@/context/Login';
 import useFormChange from '@/hooks/useFormChange';
 import memberService from '@/services/member';
 import { QueryKeys } from '@/libs/client';
@@ -13,7 +13,7 @@ import { MyInfoForm, MyPictureURLForm } from '@/components/Form';
 import MyInfoMenu from '@/components/Menu/MyInfoMenu';
 
 const MyInfoLayout = () => {
-  const { userInfo } = useContext(LoginContext) as LoginContextType;
+  const { userInfo } = useLoginContext();
   const [memberId, setMemberId] = useState('');
   const [pictureURL, setPictureURL] = useState('');
   const [form, onChange, setForm] = useFormChange({

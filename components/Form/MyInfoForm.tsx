@@ -1,12 +1,12 @@
-import { ChangeEvent, FormEvent, useCallback, useContext } from 'react';
+import { ChangeEvent, FormEvent, useCallback } from 'react';
 import { useMutation } from 'react-query';
 
-import { LoginContext, LoginContextType } from '@/pages/_app';
 import { Button } from '@/components/Button';
 import { TextInput, TextInputProps } from '@/components/Input';
 import memberService from '@/services/member';
 
 import styles from './MyInfoForm.module.scss';
+import { useLoginContext } from '@/context/Login';
 
 const MyInfoFormItem = ({
   name,
@@ -40,7 +40,7 @@ type MyInfoFormProps = {
 };
 
 const MyInfoForm = ({ form, onChange }: MyInfoFormProps) => {
-  const { userInfo } = useContext(LoginContext) as LoginContextType;
+  const { userInfo } = useLoginContext();
   const { memberId, name, nickname, email } = form;
   const { id } = userInfo;
 

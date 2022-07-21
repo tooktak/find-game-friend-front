@@ -1,32 +1,29 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useContext, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 
 import useToggle from '@/hooks/useToggle';
 import { Button } from '@/components/Button';
-import { LoginContext, LoginContextType } from '@/pages/_app';
+import { useLoginContext } from '@/context/Login';
 import MyMenu from './MyMenu';
 import { MyMenuDropdown } from './Dropdown';
 
 const LoginMenu = () => {
-  const { isLogin, toggleIsLogin, setUserInfo } = useContext(
-    LoginContext,
-  ) as LoginContextType;
+  const { isLogin, setUserInfoLogout } = useLoginContext();
   const [menuOpen, toggleMenuOpen] = useToggle();
   const router = useRouter();
 
   const handleMenuClose = useCallback(() => {
     if (menuOpen) toggleMenuOpen(false);
-  }, [menuOpen]);
+  }, [menuOpen, toggleMenuOpen]);
 
   const onLogout = useCallback(() => {
-    toggleIsLogin(false);
-    setUserInfo({ id: '' });
-  }, [toggleIsLogin]);
+    setUserInfoLogout();
+  }, [setUserInfoLogout]);
 
   useEffect(() => {
-    if (menuOpen) handleMenuClose();
-  }, [router]);
+    toggleMenuOpen(false);
+  }, [router, toggleMenuOpen]);
 
   const menuItems = [
     {

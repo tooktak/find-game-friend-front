@@ -1,12 +1,12 @@
 import { ChangeEvent } from 'react';
 import styles from './index.module.scss';
 
-export type Option = { value: string; description: string };
+export type SelectOption = { value: string; description: string };
 
 type SelectProps = {
   name: string;
   value: string;
-  option: Option[];
+  option: SelectOption[];
   onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
 
