@@ -38,15 +38,24 @@ const LoginMenu = () => {
   ];
 
   return isLogin ? (
-    <MyMenuDropdown
-      open={menuOpen}
-      menuClose={handleMenuClose}
-      trigger={<MyMenu open={menuOpen} toggleOpen={toggleMenuOpen} />}
-      menuItems={menuItems}
-    />
+    <>
+      <Link href="/write" passHref>
+        <Button rounded outline color="main">
+          글쓰기
+        </Button>
+      </Link>
+      <MyMenuDropdown
+        open={menuOpen}
+        menuClose={handleMenuClose}
+        trigger={<MyMenu open={menuOpen} toggleOpen={toggleMenuOpen} />}
+        menuItems={menuItems}
+      />
+    </>
   ) : (
     <Link href="/login" passHref>
-      <Button color="main">login</Button>
+      <Button rounded color="main">
+        login
+      </Button>
     </Link>
   );
 };
