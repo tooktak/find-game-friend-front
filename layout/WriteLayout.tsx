@@ -89,12 +89,21 @@ const WriteLayout = () => {
           )}
         </div>
         <div style={{ gridColumn: '2 / 5', gridRow: '1' }}>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>글쓰기</h1>
+          <form
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '16px',
+              marginTop: '16px',
+            }}
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <Controller
               name="title"
               control={control}
               render={({ field }) => (
-                <TextInput placeholder="제목을 입력하세요." {...field} />
+                <TextInput bold placeholder="제목을 입력하세요." {...field} />
               )}
             />
             <Controller
@@ -121,9 +130,14 @@ const WriteLayout = () => {
               control={control}
               render={({ field }) => <TextInput {...field} />}
             />
-            <Button rounded type="submit">
-              작성
-            </Button>
+            <div style={{ display: 'flex', justifyContent: 'end', gap: '8px' }}>
+              <Button color="sub" rounded type="submit">
+                취소
+              </Button>
+              <Button color="main" rounded type="submit">
+                작성
+              </Button>
+            </div>
           </form>
         </div>
       </GridLayout>

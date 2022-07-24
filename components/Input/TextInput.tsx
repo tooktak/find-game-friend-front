@@ -6,11 +6,12 @@ export type TextInputProps = {
   placeholder?: string;
   name: string;
   value: string;
+  bold?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  function TextInput({ name, placeholder, type, value, onChange }, ref) {
+  function TextInput({ name, placeholder, type, value, bold, onChange }, ref) {
     return (
       <div className={styles.container}>
         <input
@@ -21,6 +22,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           name={name}
           value={value}
           onChange={onChange}
+          style={{ fontWeight: bold ? 'bold' : '' }}
         />
         <label className={styles.label}>{name}</label>
       </div>
