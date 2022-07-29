@@ -37,6 +37,10 @@
     }
   }
 
+  &.rounded {
+    border-radius: 50px;
+  }
+
   &.large {
     height: 2rem;
     font-size: 1rem;
