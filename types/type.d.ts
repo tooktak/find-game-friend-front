@@ -10,6 +10,11 @@ type FindMatePost = {
   gameId: string;
 };
 
+type AddFindMatePost = Omit<
+  FindMatePost,
+  'id' | 'latestPullUpDateTime' | 'memberId'
+>;
+
 type SearchCategory = 'gameId' | 'game' | 'title' | 'hashtag' | 'contents';
 
 type Member = {
@@ -36,4 +41,11 @@ type Game = {
   id: string;
   title: string;
   thumbnailURL: string;
+};
+
+type MyInfo = {
+  memberId: string;
+  name: string;
+  nickname: string;
+  email: string;
 };
