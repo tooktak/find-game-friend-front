@@ -68,16 +68,14 @@ const WriteLayout = () => {
   return (
     <Main>
       <GridLayout>
-        <div className={styles.card}>
-          <FindMatePostCard
-            thumbnail={thumbnail}
-            title={title}
-            content={contents}
-            hashtags={['태그1', '태그2', '태그3']}
-            kakaoLink={kakaoLink}
-            discordLink={discordLink}
-          />
-        </div>
+        <FindMatePostCard
+          thumbnail={thumbnail}
+          title={title}
+          content={contents}
+          hashtags={['태그1', '태그2', '태그3']}
+          kakaoLink={kakaoLink}
+          discordLink={discordLink}
+        />
         <div className={styles.form}>
           <h1 className={styles.title}>글쓰기</h1>
           <WriteForm
