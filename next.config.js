@@ -11,6 +11,7 @@ const nextConfig = {
       path.resolve(__dirname, 'src/styles'),
       path.resolve(__dirname, 'src/components'),
     ],
+    prependData: `@import 'styles/media.scss'; @import 'styles/theme.scss';`,
   },
   env: {
     REST_URL_SERVER: process.env.REST_URL_SERVER,
