@@ -1,20 +1,19 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { useCallback, useEffect, useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
-import { QueryKeys } from '@/libs/client';
-import gameService from '@/services/game';
+
 import Main from '@/components/Main';
 import { FindMatePostCard as SkeletonCard } from '@/components/Skeleton';
 import { FindMatePostCard } from '@/components/Card';
-import { TextInput } from '@/components/Input';
 import { GridLayout } from '@/components/Layout';
-import Select from '@/components/Select';
-import { Button } from '@/components/Button';
-import MultilineInput from '@/components/Input/MultilineInput';
+import WriteForm from '@/components/Form/WriteForm';
+
+import { QueryKeys } from '@/libs/client';
+import gameService from '@/services/game';
+import styles from './WriteLayout.module.scss';
 
 const defaultValues = {
-  thumbnail: '',
   title: '',
   contents: '',
   gameId: '',
@@ -23,34 +22,21 @@ const defaultValues = {
   discordLink: 'https://discord.gg/',
 };
 
-type PostedFindMatePost = Omit<
-  FindMatePost,
-  'id' | 'latestPullUpDateTime' | 'memberId'
->;
-
-const getGameSelectOptions = (gameData: Game[] | undefined) => {
-  if (gameData && gameData.length) {
-    return gameData.map(game => {
-      const { id, title } = game;
-      return { value: id, description: title };
-    });
-  }
-  return [];
-};
-
 const WriteLayout = () => {
   const { control, handleSubmit, watch, setValue } = useForm({ defaultValues });
   const { title, contents, kakaoLink, discordLink, gameId } = watch();
   const [thumbnail, setThumbnail] = useState('');
 
-  const { isLoading, isError, data, error } = useQuery<Game[], AxiosError>(
-    QueryKeys.GAME,
-    gameService.findAll,
-  );
+  const {
+    isLoading,
+    isError,
+    data = [],
+    error,
+  } = useQuery<Game[], AxiosError>(QueryKeys.GAME, gameService.findAll);
 
-  const onSubmit: SubmitHandler<PostedFindMatePost> = data => {
+  const onSubmit: SubmitHandler<AddFindMatePost> = useCallback(data => {
     alert(JSON.stringify(data));
-  };
+  }, []);
 
   useEffect(() => {
     if (!gameId && data && data.length) {
@@ -63,7 +49,17 @@ const WriteLayout = () => {
     }
   }, [data, gameId, setValue]);
 
-  const selectOptions = useMemo(() => getGameSelectOptions(data), [data]);
+  if (isLoading) {
+    return (
+      <Main>
+        <GridLayout>
+          <div className={styles.card}>
+            <SkeletonCard />
+          </div>
+        </GridLayout>
+      </Main>
+    );
+  }
 
   if (isError) {
     return <span>Error: {error.message}</span>;
@@ -72,73 +68,23 @@ const WriteLayout = () => {
   return (
     <Main>
       <GridLayout>
-        <div
-          style={{ gridColumn: '1', gridRow: '1', width: 'calc(960px / 4)' }}
-        >
-          {isLoading ? (
-            <SkeletonCard />
-          ) : (
-            <FindMatePostCard
-              thumbnail={thumbnail}
-              title={title}
-              content={contents}
-              hashtags={['a', 'b', 'c']}
-              kakaoLink={kakaoLink}
-              discordLink={discordLink}
-            />
-          )}
+        <div className={styles.card}>
+          <FindMatePostCard
+            thumbnail={thumbnail}
+            title={title}
+            content={contents}
+            hashtags={['태그1', '태그2', '태그3']}
+            kakaoLink={kakaoLink}
+            discordLink={discordLink}
+          />
         </div>
-        <div style={{ gridColumn: '2 / 5', gridRow: '1' }}>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>글쓰기</h1>
-          <form
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '16px',
-              marginTop: '16px',
-            }}
+        <div className={styles.form}>
+          <h1 className={styles.title}>글쓰기</h1>
+          <WriteForm
+            data={data}
+            control={control}
             onSubmit={handleSubmit(onSubmit)}
-          >
-            <Controller
-              name="title"
-              control={control}
-              render={({ field }) => (
-                <TextInput bold placeholder="제목을 입력하세요." {...field} />
-              )}
-            />
-            <Controller
-              name="contents"
-              control={control}
-              render={({ field }) => (
-                <MultilineInput placeholder="내용을 입력하세요." {...field} />
-              )}
-            />
-            <Controller
-              name="gameId"
-              control={control}
-              render={({ field }) => (
-                <Select {...field} option={selectOptions} />
-              )}
-            />
-            <Controller
-              name="kakaoLink"
-              control={control}
-              render={({ field }) => <TextInput {...field} />}
-            />
-            <Controller
-              name="discordLink"
-              control={control}
-              render={({ field }) => <TextInput {...field} />}
-            />
-            <div style={{ display: 'flex', justifyContent: 'end', gap: '8px' }}>
-              <Button color="sub" rounded type="submit">
-                취소
-              </Button>
-              <Button color="main" rounded type="submit">
-                작성
-              </Button>
-            </div>
-          </form>
+          />
         </div>
       </GridLayout>
     </Main>
