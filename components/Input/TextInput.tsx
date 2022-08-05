@@ -2,10 +2,10 @@ import cx from '@/styles/cx';
 import { forwardRef, memo } from 'react';
 import styles from './TextInput.module.scss';
 
-interface Props {
+type Props = {
   bold?: boolean;
   placeholder?: string;
-}
+};
 
 const TextInput = forwardRef<HTMLInputElement, Props>(
   ({ placeholder, bold, ...rest }, ref) => {
