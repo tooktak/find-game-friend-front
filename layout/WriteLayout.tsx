@@ -17,15 +17,17 @@ const defaultValues = {
   title: '',
   contents: '',
   gameId: '',
-  hashtag: [],
   kakaoLink: 'https://open.kakao.com/o/',
   discordLink: 'https://discord.gg/',
 };
 
 const WriteLayout = () => {
-  const { control, handleSubmit, watch, setValue } = useForm({ defaultValues });
+  const { register, handleSubmit, watch, setValue } = useForm<
+    Omit<AddFindMatePost, 'hashtag'>
+  >({ defaultValues });
   const { title, contents, kakaoLink, discordLink, gameId } = watch();
   const [thumbnail, setThumbnail] = useState('');
+  const [hashtag] = useState<string[]>([]);
 
   const {
     isLoading,
@@ -34,9 +36,12 @@ const WriteLayout = () => {
     error,
   } = useQuery<Game[], AxiosError>(QueryKeys.GAME, gameService.findAll);
 
-  const onSubmit: SubmitHandler<AddFindMatePost> = useCallback(data => {
-    alert(JSON.stringify(data));
-  }, []);
+  const onSubmit: SubmitHandler<Omit<AddFindMatePost, 'hashtag'>> = useCallback(
+    data => {
+      alert(JSON.stringify(data));
+    },
+    [],
+  );
 
   useEffect(() => {
     if (!gameId && data && data.length) {
@@ -72,7 +77,7 @@ const WriteLayout = () => {
           thumbnail={thumbnail}
           title={title}
           content={contents}
-          hashtags={['태그1', '태그2', '태그3']}
+          hashtags={hashtag}
           kakaoLink={kakaoLink}
           discordLink={discordLink}
         />
@@ -80,7 +85,7 @@ const WriteLayout = () => {
           <h1 className={styles.title}>글쓰기</h1>
           <WriteForm
             data={data}
-            control={control}
+            register={register}
             onSubmit={handleSubmit(onSubmit)}
           />
         </div>

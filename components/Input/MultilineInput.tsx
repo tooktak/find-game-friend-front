@@ -3,24 +3,19 @@ import styles from './MultilineInput.module.scss';
 
 export type Props = {
   placeholder?: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 };
 
 const MultilineInput = forwardRef<HTMLTextAreaElement, Props>(
-  function MultilineInput({ name, placeholder, value, onChange }, ref) {
+  function MultilineInput({ placeholder, ...rest }, ref) {
     return (
       <div className={styles.container}>
         <textarea
           ref={ref}
+          placeholder={placeholder}
           className={styles.input}
-          placeholder={placeholder ? placeholder : name}
-          name={name}
-          value={value}
-          onChange={onChange}
+          {...rest}
         />
-        <label className={styles.label}>{name}</label>
+        <label className={styles.label}>{placeholder}</label>
       </div>
     );
   },

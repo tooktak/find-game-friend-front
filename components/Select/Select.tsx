@@ -1,4 +1,4 @@
-import { memo, forwardRef, SelectHTMLAttributes } from 'react';
+import { memo, forwardRef } from 'react';
 import styles from './Select.module.scss';
 import cx from '@/styles/cx';
 
@@ -7,7 +7,7 @@ export type SelectOption = {
   description: string;
 };
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+interface SelectProps {
   noOutline?: boolean;
   option: SelectOption[];
 }

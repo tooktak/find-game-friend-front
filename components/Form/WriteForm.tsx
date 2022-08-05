@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { FormEventHandler, useCallback, useMemo } from 'react';
-import { Control, Controller } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 import { TextInput } from '@/components/Input';
 import { Select } from '@/components/Select';
 import { Button } from '@/components/Button';
@@ -10,7 +10,7 @@ import styles from './WriteForm.module.scss';
 
 type Props = {
   data: Game[];
-  control: Control<AddFindMatePost, object>;
+  register: UseFormRegister<Omit<AddFindMatePost, 'hashtag'>>;
   onSubmit: FormEventHandler<HTMLFormElement>;
 };
 
@@ -23,7 +23,7 @@ const getGameSelectOptions = (gameData: Game[] | undefined) => {
   }
   return [];
 };
-const WriteForm = ({ data, control, onSubmit }: Props) => {
+const WriteForm = ({ data, register, onSubmit }: Props) => {
   const router = useRouter();
   const selectOptions = useMemo(() => getGameSelectOptions(data), [data]);
 
@@ -36,34 +36,23 @@ const WriteForm = ({ data, control, onSubmit }: Props) => {
 
   return (
     <form className={styles.form} onSubmit={onSubmit}>
-      <Controller
-        name="title"
-        control={control}
-        render={({ field }) => (
-          <TextInput bold placeholder="제목을 입력하세요." {...field} />
-        )}
+      <TextInput
+        bold
+        placeholder="제목"
+        {...register('title', { required: true })}
       />
-      <Controller
-        name="contents"
-        control={control}
-        render={({ field }) => (
-          <MultilineInput placeholder="내용을 입력하세요." {...field} />
-        )}
+      <MultilineInput
+        placeholder="내용"
+        {...register('contents', { required: true })}
       />
-      <Controller
-        name="gameId"
-        control={control}
-        render={({ field }) => <Select {...field} option={selectOptions} />}
+      <Select {...register('gameId')} option={selectOptions} />
+      <TextInput
+        placeholder="kakaotalk"
+        {...register('kakaoLink', { required: true })}
       />
-      <Controller
-        name="kakaoLink"
-        control={control}
-        render={({ field }) => <TextInput {...field} />}
-      />
-      <Controller
-        name="discordLink"
-        control={control}
-        render={({ field }) => <TextInput {...field} />}
+      <TextInput
+        placeholder="discord"
+        {...register('discordLink', { required: true })}
       />
       <div className={styles.btnWrapper}>
         <Button color="sub" rounded onClick={onCancel}>
