@@ -1,7 +1,7 @@
 import { forwardRef, memo } from 'react';
 import styles from './MultilineInput.module.scss';
 
-export type Props = {
+type Props = {
   placeholder?: string;
 };
 

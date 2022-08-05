@@ -7,12 +7,12 @@ export type SelectOption = {
   description: string;
 };
 
-interface SelectProps {
+type Props = {
   noOutline?: boolean;
   option: SelectOption[];
-}
+};
 
-const Select = forwardRef<HTMLSelectElement, SelectProps>(
+const Select = forwardRef<HTMLSelectElement, Props>(
   ({ noOutline = false, option, ...rest }, ref) => {
     const classNames = cx(styles)('select', { noOutline });
 
