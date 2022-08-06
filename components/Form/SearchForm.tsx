@@ -1,41 +1,69 @@
-import { FormEvent, memo } from 'react';
-import Select from '../Select';
+import { memo, useCallback } from 'react';
+import { Select } from '../Select';
 import { SearchInput } from '../Input';
 import { RiSearchLine } from 'react-icons/ri';
 
 import styles from './SearchForm.module.scss';
-import { useFindMatePostSearchContext } from '@/context/FindMatePost';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+
+type Search = {
+  q: string;
+  category: string;
+};
+
+const Divide = () => <hr className={styles.divide} />;
+
+const SearchButton = ({ onClick }: { onClick: () => void }) => (
+  <div className={styles.icon} onClick={onClick}>
+    <RiSearchLine />
+  </div>
+);
+
+const searchCategorys = [
+  { value: 'title', description: '제목' },
+  { value: 'game', description: '게임' },
+  { value: 'hashtag', description: '태그' },
+  { value: 'contents', description: '내용' },
+];
 
 const SearchForm = () => {
-  const { searchCategory, form, onChange, handleSearch } =
-    useFindMatePostSearchContext();
+  const { register, handleSubmit, watch } = useForm<Search>();
+  const router = useRouter();
 
-  const { q, category } = form;
+  const { q, category } = watch();
 
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSearch = useCallback(() => {
+    if (q) {
+      router.push({
+        pathname: '/search',
+        query: {
+          category,
+          q,
+        },
+      });
+      return;
+    }
+    router.push('/');
+  }, [category, q, router]);
+
+  const onSubmit: SubmitHandler<Search> = useCallback(() => {
     handleSearch();
-  };
+  }, [handleSearch]);
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.container}>
-        <Select
-          name="category"
-          value={category}
-          option={searchCategory}
-          onChange={onChange}
-        />
-        <hr className={styles.divide} />
-        <SearchInput
-          placeholder="search..."
-          name="q"
-          value={q}
-          onChange={onChange}
-        />
-        <div className={styles.icon} onClick={handleSearch}>
-          <RiSearchLine />
+        <div className={styles.select}>
+          <Select
+            {...register('category')}
+            option={searchCategorys}
+            noOutline
+          />
         </div>
+        <Divide />
+        <SearchInput placeholder="search..." {...register('q')} />
+        <SearchButton onClick={handleSearch} />
       </div>
     </form>
   );

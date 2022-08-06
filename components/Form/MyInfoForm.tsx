@@ -1,88 +1,58 @@
-import { ChangeEvent, FormEvent, useCallback } from 'react';
 import { useMutation } from 'react-query';
 
 import { Button } from '@/components/Button';
-import { TextInput, TextInputProps } from '@/components/Input';
+import { TextInput } from '@/components/Input';
 import memberService from '@/services/member';
 
 import styles from './MyInfoForm.module.scss';
 import { useLoginContext } from '@/context/Login';
+import {
+  SubmitHandler,
+  UseFormHandleSubmit,
+  UseFormRegister,
+} from 'react-hook-form';
+import { forwardRef, InputHTMLAttributes } from 'react';
 
-const MyInfoFormItem = ({
-  name,
-  placeholder,
-  value,
-  onChange,
-}: TextInputProps) => (
-  <section className={styles.container}>
-    <label className={styles.label}>{placeholder}</label>
-    <div className={styles.input}>
-      <TextInput
-        name={name}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  </section>
+interface ItemProps extends InputHTMLAttributes<HTMLInputElement> {
+  placeholder: string;
+}
+
+const MyInfoFormItem = forwardRef<HTMLInputElement, ItemProps>(
+  ({ placeholder, ...rest }, ref) => (
+    <section className={styles.container}>
+      <label className={styles.label}>{placeholder}</label>
+      <div className={styles.input}>
+        <TextInput ref={ref} placeholder={placeholder} {...rest} />
+      </div>
+    </section>
+  ),
 );
 
-type MyInfo = {
-  memberId: string;
-  name: string;
-  nickname: string;
-  email: string;
+MyInfoFormItem.displayName = 'MyInfoFormItem';
+
+type Props = {
+  register: UseFormRegister<MyInfo>;
+  handleSubmit: UseFormHandleSubmit<MyInfo>;
 };
 
-type MyInfoFormProps = {
-  form: MyInfo;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
-
-const MyInfoForm = ({ form, onChange }: MyInfoFormProps) => {
+const MyInfoForm = ({ register, handleSubmit }: Props) => {
   const { userInfo } = useLoginContext();
-  const { memberId, name, nickname, email } = form;
   const { id } = userInfo;
 
   const { mutate, isLoading, isError, data } = useMutation(
     memberService.update,
   );
 
-  const onSubmit = useCallback(
-    (e: FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      mutate({ ...form, id });
-    },
-    [mutate, id, form],
-  );
+  const onSubmit: SubmitHandler<MyInfo> = data => {
+    mutate({ ...data, id });
+  };
 
   return (
-    <form onSubmit={onSubmit}>
-      <MyInfoFormItem
-        name="memberId"
-        placeholder="ID"
-        value={memberId}
-        onChange={onChange}
-      />
-      <MyInfoFormItem
-        name="name"
-        placeholder="이름"
-        value={name}
-        onChange={onChange}
-      />
-      <MyInfoFormItem
-        name="nickname"
-        placeholder="닉네임"
-        value={nickname}
-        onChange={onChange}
-      />
-      <MyInfoFormItem
-        name="email"
-        placeholder="이메일"
-        type="email"
-        value={email}
-        onChange={onChange}
-      />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <MyInfoFormItem placeholder="아이디" {...register('memberId')} />
+      <MyInfoFormItem placeholder="이름" {...register('name')} />
+      <MyInfoFormItem placeholder="닉네임" {...register('nickname')} />
+      <MyInfoFormItem placeholder="이메일" {...register('email')} />
       <div className={styles.btnWrapper}>
         {data ? <span className={styles.success}>성공</span> : null}
         {isError ? <span className={styles.error}>실패</span> : null}

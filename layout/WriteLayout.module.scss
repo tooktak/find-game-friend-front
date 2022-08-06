@@ -1,0 +1,27 @@
+.form {
+  width: 100%;
+}
+
+.title {
+  font-size: 1.5rem; 
+  font-weight: bold;
+}
+
+@include tablet {
+  .form {
+    grid-column: 2 / 4;
+    grid-row: 1;
+  }
+}
+
+@include desktop {
+  .form {
+    grid-column: 2 / 5;
+  }
+}
+
+@include desktop-fhd {
+  .form {
+    grid-column: 2 / 5;
+  }
+}

@@ -1,34 +1,29 @@
-import { memo } from 'react';
+import cx from '@/styles/cx';
+import { forwardRef, memo } from 'react';
 import styles from './TextInput.module.scss';
 
-export type TextInputProps = {
+type Props = {
+  bold?: boolean;
   placeholder?: string;
-  type?: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const TextInput = ({
-  name,
-  placeholder,
-  type,
-  value,
-  onChange,
-}: TextInputProps) => {
-  return (
-    <div className={styles.container}>
-      <input
-        className={styles.input}
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        value={value}
-        onChange={onChange}
-      />
-      <label className={styles.label}>{placeholder}</label>
-    </div>
-  );
-};
+const TextInput = forwardRef<HTMLInputElement, Props>(
+  ({ placeholder, bold, ...rest }, ref) => {
+    const className = cx(styles)('input', { bold });
+    return (
+      <div className={styles.container}>
+        <input
+          ref={ref}
+          className={className}
+          placeholder={placeholder}
+          {...rest}
+        />
+        <label className={styles.label}>{placeholder}</label>
+      </div>
+    );
+  },
+);
+
+TextInput.displayName = 'TextInput';
 
 export default memo(TextInput);

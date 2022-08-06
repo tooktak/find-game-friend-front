@@ -1,29 +1,26 @@
-import styles from './Button.module.scss';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import cx from '@/styles/cx';
-import { forwardRef } from 'react';
+import styles from './Button.module.scss';
 
-type Props = {
-  children: string;
-  onClick?: () => void;
-  type?: 'submit';
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'large' | 'medium' | 'small';
   color?: 'main' | 'sub' | 'tag';
   rounded?: boolean;
   outline?: boolean;
   disabled?: boolean;
-};
+  children: string;
+}
 
-const Button = forwardRef<HTMLButtonElement, Props>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      children,
-      onClick,
-      type,
       size = 'medium',
       color,
       rounded = false,
       outline = false,
       disabled,
+      children,
+      ...rest
     },
     ref,
   ) => {
@@ -35,11 +32,11 @@ const Button = forwardRef<HTMLButtonElement, Props>(
 
     return (
       <button
-        type={type}
+        type="button"
         className={classNames}
-        onClick={onClick}
         disabled={disabled}
         ref={ref}
+        {...rest}
       >
         {children}
       </button>

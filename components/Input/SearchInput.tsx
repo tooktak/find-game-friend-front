@@ -1,28 +1,23 @@
-import { memo } from 'react';
+import { forwardRef, memo } from 'react';
 import styles from './SearchInput.module.scss';
 
-export type SearchInputProps = {
+type Props = {
   placeholder?: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const SearchInput = ({
-  name,
-  placeholder,
-  value,
-  onChange,
-}: SearchInputProps) => {
-  return (
-    <input
-      className={styles.input}
-      placeholder={placeholder}
-      name={name}
-      value={value}
-      onChange={onChange}
-    />
-  );
-};
+const SearchInput = forwardRef<HTMLInputElement, Props>(
+  ({ placeholder, ...rest }, ref) => {
+    return (
+      <input
+        ref={ref}
+        className={styles.input}
+        placeholder={placeholder}
+        {...rest}
+      />
+    );
+  },
+);
+
+SearchInput.displayName = 'SearchInput';
 
 export default memo(SearchInput);
