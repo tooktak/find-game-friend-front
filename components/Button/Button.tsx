@@ -8,7 +8,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   rounded?: boolean;
   outline?: boolean;
   disabled?: boolean;
-  children: string;
+  icon?: JSX.Element;
+  children?: string;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -19,6 +20,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       rounded = false,
       outline = false,
       disabled,
+      icon,
       children,
       ...rest
     },
@@ -38,7 +40,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...rest}
       >
-        {children}
+        {icon ? <span className={styles.icon}>{icon}</span> : null}
+        <span className={styles.text}>{children}</span>
       </button>
     );
   },

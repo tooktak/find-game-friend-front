@@ -1,11 +1,20 @@
+.icon {
+  display: inline-flex;
+  font-size: 1.25rem;
+}
+
+.text {
+  padding-left: 0.25rem;
+}
+
 .button {
   display: inline-flex;
   justify-content: center;
   color: white;
-  height: 1.75rem;
+  height: auto;
   font-size: 0.875rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 0.75rem;
+  padding-right: 1rem;
   outline: none;
   font-size: 1rem;
   border-radius: 5px;
@@ -40,21 +49,26 @@
   }
 
   &.large {
-    height: 2rem;
+    min-height: 2rem;
     font-size: 1rem;
-    align-items: center;
+    padding-left: 0.75rem;
+    padding-right: 0.875rem;
+    .icon {
+      font-size: 1rem;
+    }
+    .text {
+      padding-left: 0.125rem;
+    }
   }
 
   &.medium {
-    height: 1.75rem;
+    min-height: 1.75rem;
     font-size: 0.875rem;
-    align-items: center;
   }
 
   &.small {
-    height: 1.5rem;
+    min-height: 1.5rem;
     font-size: 0.75rem;
-    align-items: center;
   }
 
   @mixin button-color($color) {

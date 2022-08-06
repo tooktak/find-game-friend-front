@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 import styles from './Hashtag.module.scss';
 
 export const HashtagContainer = ({ children }: { children: ReactNode }) => {
@@ -19,4 +19,4 @@ const Hashtags = ({ hashtags }: { hashtags: string[] }) => {
   );
 };
 
-export default Hashtags;
+export default memo(Hashtags);
