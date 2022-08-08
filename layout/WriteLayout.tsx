@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import {
+  KeyboardEvent,
+  MouseEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
@@ -12,22 +18,27 @@ import WriteForm from '@/components/Form/WriteForm';
 import { QueryKeys } from '@/libs/client';
 import gameService from '@/services/game';
 import styles from './WriteLayout.module.scss';
+import { TextInput } from '@/components/Input';
+import useFormChange from '@/hooks/useFormChange';
+import { Button } from '@/components/Button';
 
 const defaultValues = {
   title: '',
   contents: '',
   gameId: '',
+  hashtag: [],
   kakaoLink: 'https://open.kakao.com/o/',
   discordLink: 'https://discord.gg/',
 };
 
 const WriteLayout = () => {
-  const { register, handleSubmit, watch, setValue } = useForm<
-    Omit<AddFindMatePost, 'hashtag'>
-  >({ defaultValues });
-  const { title, contents, kakaoLink, discordLink, gameId } = watch();
+  const { register, handleSubmit, watch, setValue } = useForm<AddFindMatePost>({
+    defaultValues,
+  });
+  const { title, contents, hashtag, kakaoLink, discordLink, gameId } = watch();
   const [thumbnail, setThumbnail] = useState('');
-  const [hashtag] = useState<string[]>([]);
+  const [form, onChange, setForm] = useFormChange({ newHashtag: '' });
+  const { newHashtag } = form;
 
   const {
     isLoading,
@@ -36,12 +47,40 @@ const WriteLayout = () => {
     error,
   } = useQuery<Game[], AxiosError>(QueryKeys.GAME, gameService.findAll);
 
-  const onSubmit: SubmitHandler<Omit<AddFindMatePost, 'hashtag'>> = useCallback(
-    data => {
-      alert(JSON.stringify(data));
+  const onEnterKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      handleAddHashtag();
+    }
+  };
+
+  const handleAddHashtag = useCallback(() => {
+    if (newHashtag.length < 1) {
+      return alert('최소 한 글자 이상 입력하세요!');
+    }
+    if (hashtag.includes(newHashtag)) {
+      return alert('중복된 태그입니다!');
+    }
+    setValue('hashtag', [...hashtag, newHashtag]);
+    setForm({ newHashtag: '' });
+  }, [hashtag, newHashtag, setForm, setValue]);
+
+  const handleRemoveHashtag = useCallback(
+    (e: MouseEvent<HTMLSpanElement>) => {
+      const { id } = e.currentTarget;
+      setValue('hashtag', [
+        ...hashtag.slice(0, Number(id)),
+        ...hashtag.slice(Number(id) + 1),
+      ]);
     },
-    [],
+    [hashtag, setValue],
   );
+
+  const onSubmit: SubmitHandler<AddFindMatePost> = useCallback(data => {
+    alert(JSON.stringify(data));
+  }, []);
+
+  // https://codiving.kr/61?category=551638
+  // https://codesandbox.io/s/infallible-bush-c92l0?file=/src/App.tsx:384-397
 
   useEffect(() => {
     if (!gameId && data && data.length) {
@@ -77,12 +116,40 @@ const WriteLayout = () => {
           thumbnail={thumbnail}
           title={title}
           content={contents}
-          hashtags={hashtag}
+          hashtags={hashtag || []}
           kakaoLink={kakaoLink}
           discordLink={discordLink}
         />
         <div className={styles.form}>
           <h1 className={styles.title}>글쓰기</h1>
+          <div>
+            {hashtag.map((element, idx) => (
+              <span key={element} id={`${idx}`} onClick={handleRemoveHashtag}>
+                {element}
+              </span>
+            ))}
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'flex-end',
+              gap: '16px',
+              marginTop: '16px',
+            }}
+          >
+            <div style={{ flexGrow: 1, width: 0 }}>
+              <TextInput
+                name="newHashtag"
+                placeholder="태그"
+                value={newHashtag}
+                onKeyPress={onEnterKeyPress}
+                onChange={onChange}
+              />
+            </div>
+            <Button color="main" onClick={handleAddHashtag}>
+              추가
+            </Button>
+          </div>
           <WriteForm
             data={data}
             register={register}

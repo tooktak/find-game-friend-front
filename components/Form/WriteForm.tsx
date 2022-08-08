@@ -10,7 +10,7 @@ import styles from './WriteForm.module.scss';
 
 type Props = {
   data: Game[];
-  register: UseFormRegister<Omit<AddFindMatePost, 'hashtag'>>;
+  register: UseFormRegister<AddFindMatePost>;
   onSubmit: FormEventHandler<HTMLFormElement>;
 };
 
@@ -55,10 +55,10 @@ const WriteForm = ({ data, register, onSubmit }: Props) => {
         {...register('discordLink', { required: true })}
       />
       <div className={styles.btnWrapper}>
-        <Button color="sub" rounded onClick={onCancel}>
+        <Button size="large" color="sub" onClick={onCancel}>
           취소
         </Button>
-        <Button type="submit" color="main" rounded>
+        <Button size="large" type="submit" color="main">
           작성
         </Button>
       </div>
