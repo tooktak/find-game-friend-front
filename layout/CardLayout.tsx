@@ -40,7 +40,7 @@ const CardLayout = () => {
           ? data.map(e => (
               <FindMatePostCard
                 key={e.id}
-                thumbnail="/maplestory.jpg"
+                thumbnail={e.game?.thumbnailURL}
                 title={e.title}
                 kakaoLink={e.kakaoLink}
                 discordLink={e.discordLink}

@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
 
@@ -75,13 +75,6 @@ const WriteLayout = () => {
     },
     [hashtag, setValue],
   );
-
-  const onSubmit: SubmitHandler<AddFindMatePost> = useCallback(data => {
-    alert(JSON.stringify(data));
-  }, []);
-
-  // https://codiving.kr/61?category=551638
-  // https://codesandbox.io/s/infallible-bush-c92l0?file=/src/App.tsx:384-397
 
   useEffect(() => {
     if (!gameId && data && data.length) {
@@ -154,7 +147,7 @@ const WriteLayout = () => {
           <WriteForm
             data={data}
             register={register}
-            onSubmit={handleSubmit(onSubmit)}
+            handleSubmit={handleSubmit}
           />
         </div>
       </GridLayout>
