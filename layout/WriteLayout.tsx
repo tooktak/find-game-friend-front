@@ -21,6 +21,7 @@ import styles from './WriteLayout.module.scss';
 import { TextInput } from '@/components/Input';
 import useFormChange from '@/hooks/useFormChange';
 import { Button } from '@/components/Button';
+import { Hashtag } from '@/components/Chip';
 
 const defaultValues = {
   title: '',
@@ -65,7 +66,7 @@ const WriteLayout = () => {
   }, [hashtag, newHashtag, setForm, setValue]);
 
   const handleRemoveHashtag = useCallback(
-    (e: MouseEvent<HTMLSpanElement>) => {
+    (e: MouseEvent<HTMLElement>) => {
       const { id } = e.currentTarget;
       setValue('hashtag', [
         ...hashtag.slice(0, Number(id)),
@@ -122,22 +123,22 @@ const WriteLayout = () => {
         />
         <div className={styles.form}>
           <h1 className={styles.title}>글쓰기</h1>
-          <div>
-            {hashtag.map((element, idx) => (
-              <span key={element} id={`${idx}`} onClick={handleRemoveHashtag}>
-                {element}
-              </span>
-            ))}
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              gap: '16px',
-              marginTop: '16px',
-            }}
-          >
-            <div style={{ flexGrow: 1, width: 0 }}>
+          {hashtag && hashtag.length ? (
+            <div className={styles.hashtagListWrapper}>
+              {hashtag.map((element, idx) => (
+                <Hashtag
+                  key={element}
+                  id={`${idx}`}
+                  onClick={handleRemoveHashtag}
+                >
+                  {element}
+                </Hashtag>
+              ))}
+            </div>
+          ) : null}
+
+          <div className={styles.hashtagFormWrapper}>
+            <div className={styles.hashtagInput}>
               <TextInput
                 name="newHashtag"
                 placeholder="태그"
