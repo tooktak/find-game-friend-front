@@ -23,6 +23,9 @@ const searchFindMatePosts = {
   },
   byGame: async (findMatePosts: FindMatePost[], { q }: SearchQuery) => {
     const games = await testData.getGames();
+
+    if (typeof games === 'undefined') return;
+
     const filteredGames = games.filter(game => game.title.indexOf(q) > -1);
     const filteredGameIds = filteredGames.map(game => game.id);
     const filteredFindMatePosts = findMatePosts.filter(post =>
@@ -77,6 +80,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { q, category } = req.query as { q: string; category: SearchUrl };
   const findMatePosts = await testData.getFindMatePosts();
   const query = { q };
+
+  if (typeof findMatePosts === 'undefined') return;
+
   const filteredFindMatePosts = await getFilteredFindMatePosts({
     category,
     findMatePosts,
