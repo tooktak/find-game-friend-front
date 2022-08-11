@@ -7,7 +7,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (req.method === 'POST') {
     const newFindMatePost = req.body as AddFindMatePost;
-    const lastIdx = Number(findMatePosts[findMatePosts.length - 1].id);
+    const lastIdx =
+      findMatePosts.length === 0 ? 0 : Number(findMatePosts[0].id);
     // if (!email || !memberId || !nickname) throw 'id is too short';
     findMatePosts.unshift({
       id: (lastIdx + 1).toString(),
