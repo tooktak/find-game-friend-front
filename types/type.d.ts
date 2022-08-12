@@ -8,11 +8,16 @@ type FindMatePost = {
   latestPullUpDateTime: string;
   memberId: string;
   gameId: string;
+  game?: {
+    id: string;
+    title: string;
+    thumbnailURL: string;
+  };
 };
 
 type AddFindMatePost = Omit<
   FindMatePost,
-  'id' | 'latestPullUpDateTime' | 'memberId'
+  'id' | 'latestPullUpDateTime' | 'game'
 >;
 
 type SearchCategory = 'gameId' | 'game' | 'title' | 'hashtag' | 'contents';

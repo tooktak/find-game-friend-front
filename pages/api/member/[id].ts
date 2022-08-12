@@ -5,8 +5,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
   const members = await testData.getMembers();
 
+  if (typeof members === 'undefined') return;
+
   if (req.method === 'PUT') {
-    const body = req.body;
+    const body = req.body as Member;
     const { email, memberId, nickname } = body;
     if (!email || !memberId || !nickname) throw 'id is too short';
     const targetIdx = members.findIndex(member => member.id === id);
@@ -15,6 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       ...body,
     };
     members.splice(targetIdx, 1, newMember);
+    testData.setMembers(members);
     res.status(200).json(newMember);
   } else {
     const member = members.find(member => member.id === id);

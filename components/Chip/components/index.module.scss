@@ -1,0 +1,29 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background-color: $gray-900;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  z-index: 5;
+
+  &:hover {
+    background-color: darken($gray-900, 3%);
+    color: $gray-100;
+  }
+
+  &:active {
+    background-color: darken($gray-900, 6%);
+    color: darken($gray-100, 10%);
+  }
+}
+
+.leftIcon {
+  padding-left: 4px;
+}
+
+.rightIcon {
+  padding-right: 4px;
+}

@@ -2,26 +2,21 @@
   {
     "id": "1",
     "title": "메이플 스토리",
-    "thumbnailURL": "/test3.jpg"
+    "thumbnailURL": "/maplestory.jpg"
   },
   {
     "id": "2",
     "title": "로스트아크",
-    "thumbnailURL": "/test3.jpg"
+    "thumbnailURL": "/lostark.png"
   },
   {
     "id": "3",
     "title": "월드오브워크래프트",
-    "thumbnailURL": "/test3.jpg"
-  },
-  {
-    "id": "4",
-    "title": "리니지",
-    "thumbnailURL": "/test3.jpg"
+    "thumbnailURL": "/world-of-warcraft.jpg"
   },
   {
     "id": "5",
     "title": "리그오브레전드",
-    "thumbnailURL": "/test3.jpg"
+    "thumbnailURL": "/league-of-legend.jpg"
   }
 ]

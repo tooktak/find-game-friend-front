@@ -54,7 +54,7 @@ const create = async ({
   discordLink,
   memberId,
   gameId,
-}: FindMatePost) => {
+}: AddFindMatePost) => {
   const response = await fetcher.post<string>('/find-mate-post', {
     title,
     contents,
