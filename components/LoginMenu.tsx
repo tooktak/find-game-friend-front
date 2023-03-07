@@ -54,7 +54,7 @@ const LoginMenu = () => {
   ) : (
     <Link href="/login" passHref>
       <Button rounded color="main">
-        login
+        로그인
       </Button>
     </Link>
   );

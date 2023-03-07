@@ -62,7 +62,7 @@ const SearchForm = () => {
           />
         </div>
         <Divide />
-        <SearchInput placeholder="search..." {...register('q')} />
+        <SearchInput placeholder="친구찾기" {...register('q')} />
         <SearchButton onClick={handleSearch} />
       </div>
     </form>
