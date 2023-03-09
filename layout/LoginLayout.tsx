@@ -17,6 +17,7 @@ const LoginLayout = () => {
   });
 
   const onLogin = () => {
+    console.log("rere");
     const login = {
       memberId: 'asdfg',
       password: '0000',
@@ -31,16 +32,11 @@ const LoginLayout = () => {
           {isLoading ? '로그인 중...' : '로그인'}
         </Button>
       </Link>
-      <GoogleLogin clientId='1033931690858-58kuqhjo9877bcnod4og9jg1av9cusk1.apps.googleusercontent.com'>
-        Google
-        <ul>
-          <li id="GgCustomLogin">
-            <a href="javascript:void(0)">
-              <div className="g-signin2" data-onsuccess="onSignIn"></div>
-            </a>
-          </li>
-        </ul>
-      </GoogleLogin>
+      <GoogleLogin
+          clientId="1033931690858-58kuqhjo9877bcnod4og9jg1av9cusk1.apps.googleusercontent.com"
+          onSuccess={onLogin}
+          isSignedIn={true}
+      />
     </Layout>
   );
 };

@@ -3,21 +3,21 @@ import fetcher from '@/libs/fetcher';
 const getUrlByType = (category: SearchCategory) => {
   switch (category) {
     case 'gameId':
-      return '/find-mate-post/by-id-page';
+      return '/post/by-id-page';
     case 'game':
-      return '/find-mate-post/by-game-page';
+      return '/post/by-game-page';
     case 'title':
-      return '/find-mate-post/by-title-page';
+      return '/post/by-title-page';
     case 'hashtag':
-      return '/find-mate-post/by-hashtag-page';
+      return '/post/by-hashtag-page';
     case 'contents':
-      return '/find-mate-post/by-contents-page';
+      return '/post/by-contents-page';
   }
 };
 
 const findAll = async () => {
-  const response = await fetcher.get<FindMatePost[]>('/find-mate-post');
-  return response.data;
+  const response = await fetcher.get<FindMatePost[]>('/find-mate-post/post');
+  return null;
 };
 
 const search = async ({
