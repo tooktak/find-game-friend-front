@@ -33,11 +33,9 @@ const LoginLayout = () => {
   const googleSignInButton = useRef(null);
   const onGoogleSignIn = (res) => {
     console.log(res);
-    const login = {
-      memberId: 'asdfg',
-      password: '0000',
-    };
-    mutate(login);
+    console.log(res.credential);
+    var test = res.credential;
+    memberService.google_oauth_callback(test);
   };
 
   useScript('https://accounts.google.com/gsi/client', () => {
