@@ -1,21 +1,23 @@
-import Link from 'next/link';
-import {useMutation} from 'react-query';
-
-import {Layout} from '@/components/Layout';
-import {Button} from '@/components/Button';
-import {useLoginContext} from '@/context/Login';
+import { Layout } from '@/components/Layout';
+import { useLoginContext } from '@/context/Login';
 import memberService from '@/services/member';
-import {useEffect, useRef} from "react";
-import {Http2ServerResponse} from "http2";
+import { useEffect, useRef } from 'react';
+import { useMutation } from 'react-query';
+import Member from "@/services/member";
+import {useRouter} from "next/router";
+
 
 const LoginLayout = () => {
-  const {setUserInfoData} = useLoginContext();
-
-  const {mutate, isLoading} = useMutation(memberService.login, {
-    onSuccess: data => {
-      setUserInfoData(data);
+  const { setUserInfoData } = useLoginContext();
+  const router = useRouter();
+  const { mutate, isLoading } = useMutation(
+    memberService.google_oauth_callback,
+    {
+      onSuccess: data => {
+        setUserInfoData({sub:data});
+      },
     },
-  });
+  );
 
   const useScript = (url: unknown, onload: unknown) => {
     useEffect(() => {
@@ -31,22 +33,23 @@ const LoginLayout = () => {
   };
 
   const googleSignInButton = useRef(null);
-  const onGoogleSignIn = (res) => {
-    console.log(res);
-    console.log(res.credential);
-    var test = res.credential;
-    memberService.google_oauth_callback(test);
+  const onGoogleSignIn = async res => {
+    //const test = res.credential;
+    //const response = await memberService.google_oauth_callback(test);
+    mutate(res.credential);
+    router.push('/');
+    // 여기에 리턴값 확인 한뒤 맴버 정보 및 localstorge에 관련값 저장.
   };
 
   useScript('https://accounts.google.com/gsi/client', () => {
     window.google.accounts.id.initialize({
-      client_id: "1033931690858-58kuqhjo9877bcnod4og9jg1av9cusk1.apps.googleusercontent.com",
+      client_id:
+        '1033931690858-58kuqhjo9877bcnod4og9jg1av9cusk1.apps.googleusercontent.com',
       callback: onGoogleSignIn,
     });
     window.google.accounts.id.renderButton(googleSignInButton.current, {
       width: '250',
-      type: 'icon',
-      shape: 'circle',
+      shape: 'square',
     });
   });
 

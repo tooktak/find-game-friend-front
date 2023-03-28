@@ -20,12 +20,10 @@ const login = async ({
 };
 
 const google_oauth_callback = async (credential: string) => {
-  console.log(credential);
   const response = await fetcher.get(
     '/oauth/google/callback?code='.concat(credential),
   );
-  console.log(response);
-  return response.data;
+  return response.data.accessToken;
 };
 
 const update = async ({
@@ -58,6 +56,12 @@ const updatePicture = async ({
   return response.data;
 };
 
-const member = { findById, login, update, updatePicture, google_oauth_callback };
+const member = {
+  findById,
+  login,
+  update,
+  updatePicture,
+  google_oauth_callback,
+};
 
 export default member;

@@ -13,7 +13,6 @@ const CardLayout = () => {
     FindMatePost[],
     AxiosError
   >(QueryKeys.FIND_MATE_POST, findMatePostService.findAll);
-
   if (isLoading) {
     return (
       <Main>
@@ -29,7 +28,6 @@ const CardLayout = () => {
   if (isError) {
     return <span>Error: {error.message}</span>;
   }
-
   return (
     <Main>
       <MobileOnlyLayout>

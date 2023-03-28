@@ -4,7 +4,7 @@ import useToggle from '@/hooks/useToggle';
 import useLocalStorage from '@/hooks/useLocalStorage';
 
 type DefaultUserInfo = {
-  id: '';
+  sub: '';
 };
 
 type LoginContextType = {
@@ -20,7 +20,7 @@ const Login = ({ children }: { children: ReactNode }) => {
   const [isLogin, toggleIsLogin] = useToggle();
   const [userInfo, setUserInfo] = useLocalStorage<Member | DefaultUserInfo>(
     'userInfo',
-    { id: '' },
+    { sub : '' },
   );
 
   const setUserInfoData = (data: Member) => {
@@ -30,14 +30,14 @@ const Login = ({ children }: { children: ReactNode }) => {
 
   const setUserInfoLogout = () => {
     toggleIsLogin(false);
-    setUserInfo({ id: '' });
+    setUserInfo({ sub: '' });
   };
 
   useEffect(() => {
     if (
       typeof userInfo === 'object' &&
       !Array.isArray(userInfo) &&
-      userInfo?.id
+      userInfo?.sub
     ) {
       toggleIsLogin(true);
     }

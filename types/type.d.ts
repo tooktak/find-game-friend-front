@@ -18,6 +18,7 @@ type AddFindMatePost = Omit<
 type SearchCategory = 'gameId' | 'game' | 'title' | 'hashtag' | 'contents';
 
 type Member = {
+  sub: string;
   id: string;
   memberId: string;
   password: string;

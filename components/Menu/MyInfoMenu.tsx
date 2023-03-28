@@ -24,7 +24,7 @@ const MyInfoMenu = () => {
       </ul>
       <ul className={styles.menu}>
         <MyInfoMenuItem href="/myinfo" title="내 정보" />
-        <MyInfoMenuItem href="/mypassword" title="비밀번호 변경" />
+        {/*<MyInfoMenuItem href="/mypassword" title="비밀번호 변경" />*/}
         <MyInfoMenuItem href="/mydelete" title="탈퇴" />
       </ul>
     </div>
