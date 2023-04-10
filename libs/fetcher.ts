@@ -2,16 +2,14 @@ import axios from 'axios';
 
 const BASE_URL ='http://localhost:8080';
 /*process.env.REST_URL_SERVER || */
-console.log(BASE_URL);
 const fetcher = axios.create({
   baseURL: BASE_URL,
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
-    //'Access-Control-Allow-Origin': 'http://localhost:8080',
-    //'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    //'Access-Control-Allow-Credentials': true,
-
+    'Access-Control-Allow-Origin': 'http://localhost:8080',
+    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    'Access-Control-Allow-Credentials': true,
   },
   //withCredentials: true,
 });

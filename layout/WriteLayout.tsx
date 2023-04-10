@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useQuery } from 'react-query';
-import { AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
 
 import Main from '@/components/Main';
 import { FindMatePostCard as SkeletonCard } from '@/components/Skeleton';
@@ -12,7 +12,8 @@ import WriteForm from '@/components/Form/WriteForm';
 import { QueryKeys } from '@/libs/client';
 import gameService from '@/services/game';
 import styles from './WriteLayout.module.scss';
-
+import { router } from 'next/client';
+import { Simulate } from 'react-dom/test-utils';
 const defaultValues = {
   title: '',
   contents: '',
@@ -27,7 +28,6 @@ const WriteLayout = () => {
   >({ defaultValues });
   const { title, contents, kakaoLink, discordLink, gameId } = watch();
   const [thumbnail, setThumbnail] = useState('');
-  const [hashtag] = useState<string[]>([]);
 
   const {
     isLoading,
@@ -38,18 +38,29 @@ const WriteLayout = () => {
 
   const onSubmit: SubmitHandler<Omit<AddFindMatePost, 'hashtag'>> = useCallback(
     data => {
-      alert(JSON.stringify(data));
+      const isCheck = confirm('작성하시겠습니까?');
+      if (isCheck) {
+        axios
+          .post('http://localhost:8080/post/create', data)
+          .then(response => {
+            console.log(response);
+            // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
+          })
+          .catch(error => {
+            console.log(error);
+            // 데이터 전송에 실패한 경우 실행할 코드를 작성합니다.
+          });
+      }
     },
-    [],
+    [data],
   );
-
   useEffect(() => {
     if (!gameId && data && data.length) {
       const firstGameId = data[0].id;
       setValue('gameId', firstGameId);
     }
     if (gameId && data && data.length) {
-      const gameIdx = data.findIndex(e => e.id === gameId);
+      const gameIdx = data.findIndex(e => e.id === Number(gameId));
       setThumbnail(data[gameIdx].thumbnailURL);
     }
   }, [data, gameId, setValue]);
@@ -77,7 +88,6 @@ const WriteLayout = () => {
           thumbnail={thumbnail}
           title={title}
           content={contents}
-          hashtags={hashtag}
           kakaoLink={kakaoLink}
           discordLink={discordLink}
         />

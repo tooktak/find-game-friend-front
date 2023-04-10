@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { FormEventHandler, useCallback, useMemo } from 'react';
+import { FormEventHandler, useCallback, useMemo,} from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { TextInput } from '@/components/Input';
 import { Select } from '@/components/Select';
@@ -48,11 +48,11 @@ const WriteForm = ({ data, register, onSubmit }: Props) => {
       <Select {...register('gameId')} option={selectOptions} />
       <TextInput
         placeholder="kakaotalk"
-        {...register('kakaoLink', { required: true })}
+        {...register('kakaoLink', { required: false })}
       />
       <TextInput
         placeholder="discord"
-        {...register('discordLink', { required: true })}
+        {...register('discordLink', { required: false })}
       />
       <div className={styles.btnWrapper}>
         <Button color="sub" rounded onClick={onCancel}>

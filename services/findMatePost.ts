@@ -7,9 +7,7 @@ const getUrlByType = (category: SearchCategory) => {
     case 'game':
       return '/post/by-game-page';
     case 'title':
-      return '/post/by-title-page';
-    case 'hashtag':
-      return '/post/by-hashtag-page';
+      return '/find-mate-post/by-title-page';
     case 'contents':
       return '/post/by-contents-page';
   }
@@ -17,7 +15,7 @@ const getUrlByType = (category: SearchCategory) => {
 
 const findAll = async () => {
   const response = await fetcher.get<FindMatePost[]>('/find-mate-post/post');
-  return null;
+  return response.data;
 };
 
 const search = async ({
@@ -49,7 +47,6 @@ const findById = async (id: string) => {
 const create = async ({
   title,
   contents,
-  hashtag,
   kakaoLink,
   discordLink,
   memberId,
@@ -58,7 +55,6 @@ const create = async ({
   const response = await fetcher.post<string>('/find-mate-post', {
     title,
     contents,
-    hashtag,
     kakaoLink,
     discordLink,
     memberId,
@@ -69,12 +65,11 @@ const create = async ({
 
 const update = async (
   id: string,
-  { title, contents, hashtag, kakaoLink, discordLink, gameId }: FindMatePost,
+  { title, contents, kakaoLink, discordLink, gameId }: FindMatePost,
 ) => {
   const response = await fetcher.put<string>(`/find-mate-post/${id}`, {
     title,
     contents,
-    hashtag,
     kakaoLink,
     discordLink,
     gameId,

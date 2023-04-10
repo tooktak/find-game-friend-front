@@ -30,10 +30,10 @@ const LoginMenu = () => {
       title: '내 글 보기',
       href: '/mypost',
     },
-    {
+    /*{
       title: '내 정보',
       href: '/myinfo',
-    },
+    },*/
     { title: '로그아웃', href: '/', onClick: onLogout },
   ];
 
@@ -57,7 +57,6 @@ const LoginMenu = () => {
         로그인
       </Button>
     </Link>
-
   );
 };
 

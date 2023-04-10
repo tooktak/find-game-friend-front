@@ -6,7 +6,6 @@ type Props = {
   kakaoLink: string;
   discordLink: string;
   content: string;
-  hashtags: string[];
 };
 
 const FindMatePostCard = ({
@@ -15,7 +14,6 @@ const FindMatePostCard = ({
   kakaoLink,
   discordLink,
   content,
-  hashtags,
 }: Props) => {
   return (
     <Card>
@@ -26,7 +24,6 @@ const FindMatePostCard = ({
           <Card.IconLinks kakao={kakaoLink} discord={discordLink} />
         </Card.ContentHeader>
         <Card.Description>{content}</Card.Description>
-        <Card.Hashtag hashtags={hashtags} />
       </Card.Content>
     </Card>
   );

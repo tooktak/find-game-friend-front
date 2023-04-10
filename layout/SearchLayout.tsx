@@ -40,7 +40,7 @@ const SearchLayout = () => {
       size,
     }),
   );
-
+  console.log(data);
   if (isLoading) {
     return (
       <Main>
@@ -74,12 +74,11 @@ const SearchLayout = () => {
             {data.map(e => (
               <FindMatePostCard
                 key={e.id}
-                thumbnail="/maplestory.jpg"
+                thumbnail={e.game?.ThumbnailURL}
                 title={e.title}
                 kakaoLink={e.kakaoLink}
                 discordLink={e.discordLink}
                 content={e.contents}
-                hashtags={e.hashtag}
               />
             ))}
           </GridLayout>

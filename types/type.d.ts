@@ -2,20 +2,21 @@ type FindMatePost = {
   id: string;
   title: string;
   contents: string;
-  hashtag: string[];
   kakaoLink: string;
   discordLink: string;
   latestPullUpDateTime: string;
   memberId: string;
   gameId: string;
+  member: Member;
+  game: Game;
 };
 
 type AddFindMatePost = Omit<
   FindMatePost,
-  'id' | 'latestPullUpDateTime' | 'memberId'
+  'id' | 'latestPullUpDateTime' | 'gameId'
 >;
 
-type SearchCategory = 'gameId' | 'game' | 'title' | 'hashtag' | 'contents';
+type SearchCategory = 'gameId' | 'game' | 'title' | 'contents';
 
 type Member = {
   sub: string;
@@ -39,7 +40,7 @@ type MenuLink = {
 };
 
 type Game = {
-  id: string;
+  id: number;
   title: string;
   thumbnailURL: string;
 };

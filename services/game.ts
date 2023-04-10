@@ -5,6 +5,11 @@ const findAll = async () => {
   return response.data;
 };
 
+const findOne = async () => {
+  const response = await fetcher.get<Game['thumbnailURL']>('/game');
+  return response.data;
+};
+
 const create = async ({ title, thumbnailURL }: Game) => {
   const response = await fetcher.post<string>('/game', {
     title,
@@ -31,6 +36,7 @@ const findMatePost = {
   create,
   update,
   remove,
+  findOne,
 };
 
 export default findMatePost;

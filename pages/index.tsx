@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <CardLayout  />
-      <footer>foot</footer>
+      <footer></footer>
     </div>
   );
 };
