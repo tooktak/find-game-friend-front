@@ -14,6 +14,7 @@ const fetcher = axios.create({
   withCredentials: true,
 });
 
+
 // const create = async ({ title, description }: FindMatePost) => {
 //   const response = await axiosClient.post<any>('/findMatePost', {
 //     title,

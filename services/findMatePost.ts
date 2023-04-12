@@ -26,6 +26,8 @@ const search = async ({
 }: {
   category: SearchCategory;
   q: string;
+  page?: string; // page 프로퍼티 추가
+  size?: string; // size 프로퍼티 추가
 }) => {
   const url = getUrlByType(category);
   const params = {

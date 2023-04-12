@@ -11,7 +11,6 @@ import WriteForm from '@/components/Form/WriteForm';
 
 import { QueryKeys } from '@/libs/client';
 import gameService from '@/services/game';
-import findMatePostService from '@/services/findMatePost';
 import styles from './WriteLayout.module.scss';
 import jwtDecode from 'jwt-decode';
 import { useRouter } from 'next/router';
@@ -47,6 +46,7 @@ const WriteLayout = () => {
     data = [],
     error,
   } = useQuery<Game[], AxiosError>(QueryKeys.GAME, gameService.findAll);
+
   const onSubmit: SubmitHandler<Omit<AddFindMatePost, 'hashtag'>> = useCallback(
     data => {
       const isCheck = confirm('작성하시겠습니까?');

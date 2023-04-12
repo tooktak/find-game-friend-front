@@ -24,6 +24,7 @@ const CardLayout = () => {
     Game.findAll,
   );
   const gameThumbnail = GameData ? GameData.map(e => e.thumbnailURL) : [];
+  console.log(gameThumbnail);
   if (isLoading) {
     return (
       <Main>
@@ -38,6 +39,10 @@ const CardLayout = () => {
   if (isError) {
     return <span>Error: {error.message}</span>;
   }
+
+  const sortedPostData = [...(PostData || [])].sort((a, b) => b.id - a.id);
+  console.log(sortedPostData);
+
   return (
     <Main>
       <MobileOnlyLayout>
@@ -45,7 +50,7 @@ const CardLayout = () => {
       </MobileOnlyLayout>
       <GridLayout>
         {PostData && GameData && PostData.length
-          ? PostData.map(e => (
+          ? sortedPostData.map(e => (
               <FindMatePostCard
                 key={e.id}
                 thumbnail={gameThumbnail[Number(e.gameId) - 1]}

@@ -14,7 +14,6 @@ import {
 } from '@/components/Skeleton';
 import { SearchResult, SearchNotFound } from '@/components/Search';
 import SearchForm from '@/components/Form/SearchForm';
-import { useEffect, useState } from 'react';
 import Game from '@/services/game';
 
 const SearchLayout = () => {
