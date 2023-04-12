@@ -70,7 +70,9 @@ const SearchLayout = () => {
     return <span>Error: {error.message}</span>;
   }
 
-  return (
+    const sortedSearchData = [...(PostData || [])].sort((a, b) => b.id - a.id);
+
+    return (
     <Main>
       <MobileOnlyLayout>
         <SearchForm />
@@ -81,7 +83,7 @@ const SearchLayout = () => {
             <SearchResult data={PostData} />
           </Layout>
           <GridLayout>
-            {PostData.map(e => (
+            {sortedSearchData.map(e => (
               <FindMatePostCard
                 key={e.id}
                 thumbnail={gameThumbnail[Number(e.gameId) - 1]}

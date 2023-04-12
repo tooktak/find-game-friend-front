@@ -41,7 +41,6 @@ const CardLayout = () => {
   }
 
   const sortedPostData = [...(PostData || [])].sort((a, b) => b.id - a.id);
-  console.log(sortedPostData);
 
   return (
     <Main>
