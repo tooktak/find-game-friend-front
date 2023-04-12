@@ -41,7 +41,6 @@ const WriteLayout = () => {
     : null;
   const userId = decodedToken?.sub;
 
-  console.log(userId);
   const {
     isLoading,
     isError,
@@ -57,7 +56,9 @@ const WriteLayout = () => {
         }
         console.log(data);
         axios
-          .post('http://localhost:8080/find-mate-post/create', data)
+          .post('http://localhost:8080/find-mate-post/create', data, {
+            withCredentials: true,
+          })
           .then(response => {
             console.log(response);
             router.back();

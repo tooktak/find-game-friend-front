@@ -48,14 +48,18 @@ const create = async ({
   memberId,
   gameId,
 }: FindMatePost) => {
-  const response = await fetcher.post<string>('/find-mate-post', {
-    title,
-    contents,
-    kakaoLink,
-    discordLink,
-    memberId,
-    gameId,
-  });
+  const response = await fetcher.post<string>(
+    '/find-mate-post',
+    {
+      title,
+      contents,
+      kakaoLink,
+      discordLink,
+      memberId,
+      gameId,
+    },
+    { withCredentials: true },
+  );
   return response.data;
 };
 
