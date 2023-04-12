@@ -7,7 +7,7 @@ const Avatar = memo(() => (
   <Image
     className={styles.avatar}
     alt="avatar"
-    src="/test.jpg"
+    src="/test1.png"
     width={32}
     height={32}
     layout="fixed"

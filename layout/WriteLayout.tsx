@@ -11,15 +11,16 @@ import WriteForm from '@/components/Form/WriteForm';
 
 import { QueryKeys } from '@/libs/client';
 import gameService from '@/services/game';
+import findMatePostService from '@/services/findMatePost';
 import styles from './WriteLayout.module.scss';
-import { router } from 'next/client';
-import { Simulate } from 'react-dom/test-utils';
+import jwtDecode from 'jwt-decode';
+import { useRouter } from 'next/router';
 const defaultValues = {
   title: '',
   contents: '',
   gameId: '',
-  kakaoLink: 'https://open.kakao.com/o/',
-  discordLink: 'https://discord.gg/',
+  kakaoLink: '',
+  discordLink: '',
 };
 
 const WriteLayout = () => {
@@ -29,21 +30,37 @@ const WriteLayout = () => {
   const { title, contents, kakaoLink, discordLink, gameId } = watch();
   const [thumbnail, setThumbnail] = useState('');
 
+  const router = useRouter();
+
+  const jwtToken =
+    typeof localStorage !== 'undefined'
+      ? localStorage.getItem('userInfo')
+      : null;
+  const decodedToken: { sub?: string } | null = jwtToken
+    ? jwtDecode(jwtToken)
+    : null;
+  const userId = decodedToken?.sub;
+
+  console.log(userId);
   const {
     isLoading,
     isError,
     data = [],
     error,
   } = useQuery<Game[], AxiosError>(QueryKeys.GAME, gameService.findAll);
-
   const onSubmit: SubmitHandler<Omit<AddFindMatePost, 'hashtag'>> = useCallback(
     data => {
       const isCheck = confirm('작성하시겠습니까?');
       if (isCheck) {
+        if (userId) {
+          data.memberId = userId;
+        }
+        console.log(data);
         axios
-          .post('http://localhost:8080/post/create', data)
+          .post('http://localhost:8080/find-mate-post/create', data)
           .then(response => {
             console.log(response);
+            router.back();
             // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
           })
           .catch(error => {
@@ -52,8 +69,9 @@ const WriteLayout = () => {
           });
       }
     },
-    [data],
+    [data, userId],
   );
+
   useEffect(() => {
     if (!gameId && data && data.length) {
       const firstGameId = data[0].id;

@@ -20,9 +20,8 @@ const Login = ({ children }: { children: ReactNode }) => {
   const [isLogin, toggleIsLogin] = useToggle();
   const [userInfo, setUserInfo] = useLocalStorage<Member | DefaultUserInfo>(
     'userInfo',
-    { sub : '' },
+    { sub: '' },
   );
-
   const setUserInfoData = (data: Member) => {
     toggleIsLogin(true);
     setUserInfo(data);

@@ -23,7 +23,6 @@ const SearchButton = ({ onClick }: { onClick: () => void }) => (
 const searchCategorys = [
   { value: 'title', description: '제목' },
   { value: 'game', description: '게임' },
-  { value: 'hashtag', description: '태그' },
   { value: 'contents', description: '내용' },
 ];
 

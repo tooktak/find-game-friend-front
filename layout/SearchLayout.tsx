@@ -14,6 +14,8 @@ import {
 } from '@/components/Skeleton';
 import { SearchResult, SearchNotFound } from '@/components/Search';
 import SearchForm from '@/components/Form/SearchForm';
+import { useEffect, useState } from 'react';
+import Game from '@/services/game';
 
 const SearchLayout = () => {
   const { query } = useRouter();
@@ -29,18 +31,27 @@ const SearchLayout = () => {
     size: string;
   };
 
-  const { isLoading, isError, data, error } = useQuery<
-    FindMatePost[],
-    AxiosError
-  >([QueryKeys.FIND_MATE_POST, category, q, page, size], () =>
-    findMatePostService.search({
-      category,
-      q,
-      page,
-      size,
-    }),
+  const {
+    isLoading,
+    isError,
+    data: PostData,
+    error,
+  } = useQuery<FindMatePost[], AxiosError>(
+    [QueryKeys.FIND_MATE_POST, category, q, page, size],
+    () =>
+      findMatePostService.search({
+        category,
+        q,
+        page,
+        size,
+      }),
   );
-  console.log(data);
+  const { data: GameData } = useQuery<Game[], AxiosError>(
+    QueryKeys.GAME,
+    Game.findAll,
+  );
+
+  const gameThumbnail = (GameData || []).map(e => e.thumbnailURL);
   if (isLoading) {
     return (
       <Main>
@@ -65,16 +76,16 @@ const SearchLayout = () => {
       <MobileOnlyLayout>
         <SearchForm />
       </MobileOnlyLayout>
-      {data && data.length ? (
+      {PostData && GameData && PostData.length ? (
         <>
           <Layout>
-            <SearchResult data={data} />
+            <SearchResult data={PostData} />
           </Layout>
           <GridLayout>
-            {data.map(e => (
+            {PostData.map(e => (
               <FindMatePostCard
                 key={e.id}
-                thumbnail={e.game?.ThumbnailURL}
+                thumbnail={gameThumbnail[Number(e.gameId) - 1]}
                 title={e.title}
                 kakaoLink={e.kakaoLink}
                 discordLink={e.discordLink}

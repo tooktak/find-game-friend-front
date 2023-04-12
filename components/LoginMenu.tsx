@@ -7,6 +7,8 @@ import { Button } from '@/components/Button';
 import { useLoginContext } from '@/context/Login';
 import MyMenu from './MyMenu';
 import { MyMenuDropdown } from './Dropdown';
+import axios from 'axios';
+import fetcher from '@/libs/fetcher';
 
 const LoginMenu = () => {
   const { isLogin, setUserInfoLogout } = useLoginContext();
@@ -19,6 +21,16 @@ const LoginMenu = () => {
 
   const onLogout = useCallback(() => {
     setUserInfoLogout();
+    axios
+      .get('http://localhost:8080/sign-out', { withCredentials: true })
+      .then(response => {
+        router.push('/');
+        // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
+      })
+      .catch(error => {
+        console.log(error);
+        // 데이터 전송에 실패한 경우 실행할 코드를 작성합니다.
+      });
   }, [setUserInfoLogout]);
 
   useEffect(() => {

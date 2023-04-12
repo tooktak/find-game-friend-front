@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL ='http://localhost:8080';
+const BASE_URL = 'http://localhost:8080';
 /*process.env.REST_URL_SERVER || */
 const fetcher = axios.create({
   baseURL: BASE_URL,
@@ -11,7 +11,7 @@ const fetcher = axios.create({
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     'Access-Control-Allow-Credentials': true,
   },
-  //withCredentials: true,
+  withCredentials: true,
 });
 
 // const create = async ({ title, description }: FindMatePost) => {

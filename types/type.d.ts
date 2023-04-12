@@ -7,8 +7,6 @@ type FindMatePost = {
   latestPullUpDateTime: string;
   memberId: string;
   gameId: string;
-  member: Member;
-  game: Game;
 };
 
 type AddFindMatePost = Omit<

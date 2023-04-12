@@ -3,9 +3,7 @@ import { useLoginContext } from '@/context/Login';
 import memberService from '@/services/member';
 import { useEffect, useRef } from 'react';
 import { useMutation } from 'react-query';
-import Member from "@/services/member";
-import {useRouter} from "next/router";
-
+import { useRouter } from 'next/router';
 
 const LoginLayout = () => {
   const { setUserInfoData } = useLoginContext();
@@ -14,7 +12,7 @@ const LoginLayout = () => {
     memberService.google_oauth_callback,
     {
       onSuccess: data => {
-        setUserInfoData({sub:data});
+        setUserInfoData({ sub: data });
       },
     },
   );
@@ -37,7 +35,7 @@ const LoginLayout = () => {
     //const test = res.credential;
     //const response = await memberService.google_oauth_callback(test);
     mutate(res.credential);
-    router.push('/');
+    router.push('/', undefined, { shallow: true });
     // 여기에 리턴값 확인 한뒤 맴버 정보 및 localstorge에 관련값 저장.
   };
 

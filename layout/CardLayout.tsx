@@ -7,7 +7,6 @@ import { QueryKeys } from '@/libs/client';
 import findMatePostService from '@/services/findMatePost';
 import { FindMatePostCard as Skeleton } from '@/components/Skeleton';
 import SearchForm from '@/components/Form/SearchForm';
-import { useEffect, useState } from 'react';
 import Game from '@/services/game';
 
 const CardLayout = () => {
@@ -24,37 +23,7 @@ const CardLayout = () => {
     QueryKeys.GAME,
     Game.findAll,
   );
-  const [game, setGame] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (!GameData || !PostData) {
-      console.error(error);
-    } else {
-      const gameIds = PostData.map(e => e.gameId); //data에서 gameId만추출
-      const thumbnails: string[] = [];
-      gameIds.forEach(id => {
-        const gameIndex = GameData.findIndex(e => e.id === Number(id));
-        console.log(gameIndex);
-        thumbnails.push(GameData[gameIndex].thumbnailURL);
-      });
-      setGame(thumbnails);
-    }
-  }, [PostData, GameData]);
-  /*const [game, setGame] = useState('');
-  useEffect(() => {
-    if (!GameData || !PostData) {
-      console.error(error);
-    } else {
-      const gameIds = PostData.map(e => e.gameId); //data에서 gameId만추출
-      const gameThumbnails = gameIds.map(id => {
-        const gameIndex = GameData.findIndex(e => e.id === parseInt(id));
-        return GameData[gameIndex].thumbnailURL;
-      });
-      console.log(gameThumbnails);
-      setGame(gameThumbnails);
-    }
-  }, [PostData, GameData]);*/
-
+  const gameThumbnail = GameData ? GameData.map(e => e.thumbnailURL) : [];
   if (isLoading) {
     return (
       <Main>
@@ -69,7 +38,6 @@ const CardLayout = () => {
   if (isError) {
     return <span>Error: {error.message}</span>;
   }
-
   return (
     <Main>
       <MobileOnlyLayout>
@@ -80,7 +48,7 @@ const CardLayout = () => {
           ? PostData.map(e => (
               <FindMatePostCard
                 key={e.id}
-                thumbnail={game[Number(e.gameId) - 1]}
+                thumbnail={gameThumbnail[Number(e.gameId) - 1]}
                 title={e.title}
                 kakaoLink={e.kakaoLink}
                 discordLink={e.discordLink}
