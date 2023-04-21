@@ -24,7 +24,6 @@ const CardLayout = () => {
     Game.findAll,
   );
   const gameThumbnail = GameData ? GameData.map(e => e.thumbnailURL) : [];
-  console.log(gameThumbnail);
   if (isLoading) {
     return (
       <Main>

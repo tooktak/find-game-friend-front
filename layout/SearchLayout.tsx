@@ -70,9 +70,9 @@ const SearchLayout = () => {
     return <span>Error: {error.message}</span>;
   }
 
-    const sortedSearchData = [...(PostData || [])].sort((a, b) => b.id - a.id);
+  const sortedSearchData = [...(PostData || [])].sort((a, b) => b.id - a.id);
 
-    return (
+  return (
     <Main>
       <MobileOnlyLayout>
         <SearchForm />
