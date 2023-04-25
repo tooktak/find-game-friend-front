@@ -21,6 +21,7 @@ import { SearchNotFound, SearchResult } from '@/components/Search';
 import jwtDecode from 'jwt-decode';
 import MyPostCard from '@/components/Card/MyPostCard';
 import { router } from 'next/client';
+import { Button } from '@/components/Button';
 
 const MyPostLayout = () => {
   const { query } = useRouter();
@@ -92,14 +93,15 @@ const MyPostLayout = () => {
 
   const sortedmyPostInfo = [...(myPostInfo || [])].sort((a, b) => b.id - a.id);
 
-  /*const removeCard = id => {
-    const isCheck = confirm('정말 탈퇴하시겠습니까?');
-    if (isCheck && id !== undefined) {
+  const removeMyCardAll = () => {
+    const isCheck = confirm('모두 삭제 하시겠습니까?');
+    if (isCheck && userId !== undefined) {
+      console.log(userId);
       axios
-        .delete('http://localhost:8080/find-mate-post/remove/' + id)
+        .delete('http://localhost:8080/find-mate-post/deleteAll/' + userId)
         .then(response => {
           console.log(response);
-          router.push('http://localhost:3000');
+          window.location.href = '/mypost';
           //성공적으로 데이터 전송
         })
         .catch(error => {
@@ -107,7 +109,7 @@ const MyPostLayout = () => {
           //데이터 전송 실패
         });
     }
-  };*/
+  };
 
   return (
     <Main>
@@ -116,6 +118,9 @@ const MyPostLayout = () => {
         right={
           <div>
             내 글 목록
+            <br/>
+            <br/>
+            <Button onClick={removeMyCardAll}>전체 삭제</Button>
             <MobileOnlyLayout>
               <SearchForm />
             </MobileOnlyLayout>
