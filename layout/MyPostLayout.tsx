@@ -8,7 +8,7 @@ import Main from '@/components/Main';
 import MyInfoMenu from '@/components/Menu/MyInfoMenu';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
-import { AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { QueryKeys } from '@/libs/client';
 import findMatePostService from '@/services/findMatePost';
 import Game from '@/services/game';
@@ -18,9 +18,9 @@ import {
 } from '@/components/Skeleton';
 import SearchForm from '@/components/Form/SearchForm';
 import { SearchNotFound, SearchResult } from '@/components/Search';
-import { FindMatePostCard } from '@/components/Card';
 import jwtDecode from 'jwt-decode';
-import { useEffect } from 'react';
+import MyPostCard from '@/components/Card/MyPostCard';
+import { router } from 'next/client';
 
 const MyPostLayout = () => {
   const { query } = useRouter();
@@ -92,6 +92,23 @@ const MyPostLayout = () => {
 
   const sortedmyPostInfo = [...(myPostInfo || [])].sort((a, b) => b.id - a.id);
 
+  /*const removeCard = id => {
+    const isCheck = confirm('정말 탈퇴하시겠습니까?');
+    if (isCheck && id !== undefined) {
+      axios
+        .delete('http://localhost:8080/find-mate-post/remove/' + id)
+        .then(response => {
+          console.log(response);
+          router.push('http://localhost:3000');
+          //성공적으로 데이터 전송
+        })
+        .catch(error => {
+          console.log(error);
+          //데이터 전송 실패
+        });
+    }
+  };*/
+
   return (
     <Main>
       <SplitLayout
@@ -109,13 +126,14 @@ const MyPostLayout = () => {
                 </Layout>
                 <GridLayout>
                   {sortedmyPostInfo.map(e => (
-                    <FindMatePostCard
+                    <MyPostCard
                       key={e.id}
                       thumbnail={gameThumbnail[Number(e.gameId) - 1]}
                       title={e.title}
                       kakaoLink={e.kakaoLink}
                       discordLink={e.discordLink}
                       content={e.contents}
+                      remove={e.id}
                     />
                   ))}
                 </GridLayout>

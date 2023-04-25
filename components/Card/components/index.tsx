@@ -8,6 +8,9 @@ import IconLinks, { IconLinksContainer } from './IconLinks';
 import Description, { DescriptionContainer } from './Description';
 import ContentHeader from './ContentHeader';
 import Content from './Content';
+import RemoveLinks, {
+  RemoveIconContainer,
+} from '@/components/Card/components/RemoveLinks';
 
 const Card = ({ children }: { children: ReactNode }) => {
   return <div className={styles.card}>{children}</div>;
@@ -23,5 +26,7 @@ Card.IconLinks = IconLinks;
 Card.IconLinksContainer = IconLinksContainer;
 Card.ContentHeader = ContentHeader;
 Card.Content = Content;
+Card.RemoveLinks = RemoveLinks;
+Card.RemoveIconContainer = RemoveIconContainer;
 
 export default Card;
