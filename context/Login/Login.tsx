@@ -29,7 +29,8 @@ const Login = ({ children }: { children: ReactNode }) => {
 
   const setUserInfoLogout = () => {
     toggleIsLogin(false);
-    setUserInfo({ sub: '' });
+    setUserInfo();
+    localStorage.removeItem('userInfo');
   };
 
   useEffect(() => {
@@ -39,6 +40,9 @@ const Login = ({ children }: { children: ReactNode }) => {
       userInfo?.sub
     ) {
       toggleIsLogin(true);
+    }
+    else{
+      toggleIsLogin(false);
     }
   }, [isLogin, toggleIsLogin, userInfo]);
 

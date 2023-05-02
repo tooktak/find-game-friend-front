@@ -20,7 +20,6 @@ import SearchForm from '@/components/Form/SearchForm';
 import { SearchNotFound, SearchResult } from '@/components/Search';
 import jwtDecode from 'jwt-decode';
 import MyPostCard from '@/components/Card/MyPostCard';
-import { router } from 'next/client';
 import { Button } from '@/components/Button';
 
 const MyPostLayout = () => {
@@ -41,11 +40,12 @@ const MyPostLayout = () => {
     typeof localStorage !== 'undefined'
       ? localStorage.getItem('userInfo')
       : null;
+
   const decodedToken: { sub?: string } | null = jwtToken
     ? jwtDecode(jwtToken)
     : null;
-  const userId = decodedToken?.sub;
 
+  const userId = decodedToken?.sub;
   const {
     isLoading,
     isError,
@@ -95,10 +95,11 @@ const MyPostLayout = () => {
 
   const removeMyCardAll = () => {
     const isCheck = confirm('모두 삭제 하시겠습니까?');
-    if (isCheck && userId !== undefined) {
-      console.log(userId);
+    if (isCheck !== undefined) {
       axios
-        .delete('http://localhost:8080/find-mate-post/deleteAll/' + userId)
+        .delete('http://localhost:8080/find-mate-post/deleteAll', {
+          withCredentials: true,
+        })
         .then(response => {
           console.log(response);
           window.location.href = '/mypost';
@@ -118,8 +119,8 @@ const MyPostLayout = () => {
         right={
           <div>
             내 글 목록
-            <br/>
-            <br/>
+            <br />
+            <br />
             <Button onClick={removeMyCardAll}>전체 삭제</Button>
             <MobileOnlyLayout>
               <SearchForm />

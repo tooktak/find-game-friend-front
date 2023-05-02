@@ -20,11 +20,9 @@ const MyInfoLayout = () => {
   const removeMemberInfo = () => {
     const isCheck = confirm('정말 탈퇴하시겠습니까?');
     if (isCheck && userId !== undefined) {
-      console.log(userId);
       axios
         .delete('http://localhost:8080/remove/' + userId)
         .then(response => {
-          console.log(response);
           router.push('http://localhost:3000');
           //성공적으로 데이터 전송
         })

@@ -14,6 +14,7 @@ import gameService from '@/services/game';
 import styles from './WriteLayout.module.scss';
 import jwtDecode from 'jwt-decode';
 import { useRouter } from 'next/router';
+
 const defaultValues = {
   title: '',
   contents: '',
@@ -54,13 +55,11 @@ const WriteLayout = () => {
         if (userId) {
           data.memberId = userId;
         }
-        console.log(data);
         axios
           .post('http://localhost:8080/find-mate-post/create', data, {
             withCredentials: true,
           })
           .then(response => {
-            console.log(response);
             router.back();
             // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
           })

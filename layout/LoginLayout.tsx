@@ -32,8 +32,6 @@ const LoginLayout = () => {
 
   const googleSignInButton = useRef(null);
   const onGoogleSignIn = async res => {
-    //const test = res.credential;
-    //const response = await memberService.google_oauth_callback(test);
     mutate(res.credential);
     router.push('/', undefined, { shallow: true });
     // 여기에 리턴값 확인 한뒤 맴버 정보 및 localstorge에 관련값 저장.

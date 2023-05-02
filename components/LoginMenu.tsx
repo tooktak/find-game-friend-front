@@ -24,7 +24,6 @@ const LoginMenu = () => {
     axios
       .get('http://localhost:8080/sign-out', { withCredentials: true })
       .then(response => {
-        router.push('/');
         // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
       })
       .catch(error => {

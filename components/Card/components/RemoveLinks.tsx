@@ -12,9 +12,10 @@ const RemoveLink = ({ id }: { id: string }) => {
   const handleDelete = () => {
     const isCheck = confirm('정말 삭제하시겠습니까?');
     if (isCheck && id !== undefined) {
-      console.log(id);
       axios
-        .delete('http://localhost:8080/find-mate-post/delete/' + id)
+        .delete('http://localhost:8080/find-mate-post/delete/' + id, {
+          withCredentials: true,
+        })
         .then(response => {
           window.location.href = '/mypost';
           //성공적으로 데이터 전송
