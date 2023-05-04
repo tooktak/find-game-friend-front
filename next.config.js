@@ -6,6 +6,7 @@ const path = require('path');
 const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
+  basePath: 'tooktak.github.io/find-game-friend-front/',
   sassOptions: {
     includePaths: [
       path.resolve(__dirname, 'src/styles'),
