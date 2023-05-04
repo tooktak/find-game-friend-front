@@ -1,5 +1,5 @@
 {
-  "homePage": "https://tooktak.github.io/find-game-friend-front/",
+  "homePage": "tooktak.github.io/find-game-friend-front/",
   "name": "find-game-friend-front",
   "version": "0.1.0",
   "private": true,
@@ -9,7 +9,8 @@
     "lint": "next lint",
     "build": "next build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "export": "next export"
   },
   "proxy": "http:localhost:8080",
   "dependencies": {
