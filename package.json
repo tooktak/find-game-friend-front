@@ -1,5 +1,4 @@
 {
-  "homePage": "https://frontend-six-mu-92.vercel.app/",
   "name": "find-game-friend-front",
   "version": "0.1.0",
   "private": true,
@@ -10,7 +9,7 @@
     "lint": "next lint",
     "build": "next build",
     "predeploy": "npm run build",
-    "deploy": "vercel deploy"",
+    "deploy": "vercel deploy",
     "export": "next export"
   },
   "proxy": "http:localhost:8080",
