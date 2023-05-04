@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/dist/client/router';
 import { useQuery } from 'react-query';
 import { AxiosError } from 'axios';
 
@@ -70,7 +70,7 @@ const SearchLayout = () => {
     return <span>Error: {error.message}</span>;
   }
 
-  const sortedSearchData = [...(PostData || [])].sort((a, b) => b.id - a.id);
+  const sortedSearchData = [...(PostData || [])].sort((a, b) => parseInt(b.id) - parseInt(a.id));
 
   return (
     <Main>

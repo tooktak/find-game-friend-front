@@ -39,7 +39,7 @@ const CardLayout = () => {
     return <span>Error: {error.message}</span>;
   }
 
-  const sortedPostData = [...(PostData || [])].sort((a, b) => b.id - a.id);
+  const sortedPostData = [...(PostData || [])].sort((a, b) => parseInt(b.id) - parseInt(a.id));
 
   return (
     <Main>

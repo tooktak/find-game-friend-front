@@ -26,13 +26,7 @@ const searchFindMatePosts = {
     const filteredGames = games.filter(game => game.title.indexOf(q) > -1);
     const filteredGameIds = filteredGames.map(game => game.id);
     const filteredFindMatePosts = findMatePosts.filter(post =>
-      filteredGameIds.includes(post.gameId),
-    );
-    return filteredFindMatePosts;
-  },
-  byHashtag: (findMatePosts: FindMatePost[], { q }: SearchQuery) => {
-    const filteredFindMatePosts = findMatePosts.filter(post =>
-      post.hashtag.includes(q),
+      filteredGameIds.includes(Number(post.gameId)),
     );
     return filteredFindMatePosts;
   },
@@ -64,8 +58,6 @@ const getFilteredFindMatePosts = ({
       return searchFindMatePosts.byGameId(findMatePosts, query);
     case 'by-game-page':
       return searchFindMatePosts.byGame(findMatePosts, query);
-    case 'by-hashtag-page':
-      return searchFindMatePosts.byHashtag(findMatePosts, query);
     case 'by-contents-page':
       return searchFindMatePosts.byContents(findMatePosts, query);
     case 'by-title-page':

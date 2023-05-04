@@ -3,7 +3,7 @@ import styles from './Select.module.scss';
 import cx from '@/styles/cx';
 
 export type SelectOption = {
-  value: string;
+  value: string | number;
   description: string;
 };
 

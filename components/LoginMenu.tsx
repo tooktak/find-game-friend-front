@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/dist/client/router';
 import { useEffect, useCallback } from 'react';
 
 import useToggle from '@/hooks/useToggle';
@@ -8,7 +8,6 @@ import { useLoginContext } from '@/context/Login';
 import MyMenu from './MyMenu';
 import { MyMenuDropdown } from './Dropdown';
 import axios from 'axios';
-import fetcher from '@/libs/fetcher';
 
 const LoginMenu = () => {
   const { isLogin, setUserInfoLogout } = useLoginContext();
@@ -24,6 +23,7 @@ const LoginMenu = () => {
     axios
       .get('http://localhost:8080/sign-out', { withCredentials: true })
       .then(response => {
+        console.log(response);
         // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
       })
       .catch(error => {

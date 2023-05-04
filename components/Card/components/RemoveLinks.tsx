@@ -17,7 +17,10 @@ const RemoveLink = ({ id }: { id: string }) => {
           withCredentials: true,
         })
         .then(response => {
-          window.location.href = '/mypost';
+          console.log(response);
+          if (typeof window !== 'undefined') {
+            window.location.href = '/mypost';
+          }
           //성공적으로 데이터 전송
         })
         .catch(error => {

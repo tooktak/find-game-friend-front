@@ -5,7 +5,7 @@ import { RiSearchLine } from 'react-icons/ri';
 
 import styles from './SearchForm.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/dist/client/router';
 
 type Search = {
   q: string;

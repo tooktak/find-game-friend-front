@@ -13,7 +13,7 @@ import { QueryKeys } from '@/libs/client';
 import gameService from '@/services/game';
 import styles from './WriteLayout.module.scss';
 import jwtDecode from 'jwt-decode';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/dist/client/router';
 
 const defaultValues = {
   title: '',
@@ -75,7 +75,7 @@ const WriteLayout = () => {
   useEffect(() => {
     if (!gameId && data && data.length) {
       const firstGameId = data[0].id;
-      setValue('gameId', firstGameId);
+      setValue('gameId', String(firstGameId));
     }
     if (gameId && data && data.length) {
       const gameIdx = data.findIndex(e => e.id === Number(gameId));

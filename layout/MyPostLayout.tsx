@@ -6,7 +6,7 @@ import {
 } from '@/components/Layout';
 import Main from '@/components/Main';
 import MyInfoMenu from '@/components/Menu/MyInfoMenu';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/dist/client/router';
 import { useQuery } from 'react-query';
 import axios, { AxiosError } from 'axios';
 import { QueryKeys } from '@/libs/client';
@@ -91,7 +91,9 @@ const MyPostLayout = () => {
     ? PostData.filter(e => e.memberId === userId)
     : [];
 
-  const sortedmyPostInfo = [...(myPostInfo || [])].sort((a, b) => b.id - a.id);
+  const sortedmyPostInfo = [...(myPostInfo || [])].sort(
+    (a, b) => parseInt(b.id) - parseInt(a.id),
+  );
 
   const removeMyCardAll = () => {
     const isCheck = confirm('모두 삭제 하시겠습니까?');
@@ -102,7 +104,9 @@ const MyPostLayout = () => {
         })
         .then(response => {
           console.log(response);
-          window.location.href = '/mypost';
+          if (typeof window !== 'undefined') {
+            window.location.href = '/mypost';
+          }
           //성공적으로 데이터 전송
         })
         .catch(error => {

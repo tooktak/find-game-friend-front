@@ -17,7 +17,6 @@ const nextConfig = {
     REST_URL_SERVER: process.env.REST_URL_SERVER,
   },
 
-
   webpack(config) {
     config.resolve = {
       alias: {

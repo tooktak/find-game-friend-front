@@ -9,10 +9,7 @@ type FindMatePost = {
   gameId: string;
 };
 
-type AddFindMatePost = Omit<
-  FindMatePost,
-  'id' | 'latestPullUpDateTime' | 'gameId'
->;
+type AddFindMatePost = Omit<FindMatePost, 'id' | 'latestPullUpDateTime'>;
 
 type SearchCategory = 'gameId' | 'game' | 'title' | 'contents';
 

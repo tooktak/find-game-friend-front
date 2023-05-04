@@ -1,5 +1,5 @@
 import { ChangeEvent, createContext, ReactNode } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/dist/client/router';
 
 import useFormChange from '@/hooks/useFormChange';
 import { SelectOption } from '@/components/Select';

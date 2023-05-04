@@ -4,6 +4,7 @@ import useToggle from '@/hooks/useToggle';
 import useLocalStorage from '@/hooks/useLocalStorage';
 
 type DefaultUserInfo = {
+  id: '';
   sub: '';
 };
 
@@ -20,7 +21,7 @@ const Login = ({ children }: { children: ReactNode }) => {
   const [isLogin, toggleIsLogin] = useToggle();
   const [userInfo, setUserInfo] = useLocalStorage<Member | DefaultUserInfo>(
     'userInfo',
-    { sub: '' },
+    { sub: '', id: '' },
   );
   const setUserInfoData = (data: Member) => {
     toggleIsLogin(true);
@@ -29,7 +30,7 @@ const Login = ({ children }: { children: ReactNode }) => {
 
   const setUserInfoLogout = () => {
     toggleIsLogin(false);
-    setUserInfo();
+    setUserInfo({ sub: '', id: '' });
     localStorage.removeItem('userInfo');
   };
 
@@ -40,8 +41,7 @@ const Login = ({ children }: { children: ReactNode }) => {
       userInfo?.sub
     ) {
       toggleIsLogin(true);
-    }
-    else{
+    } else {
       toggleIsLogin(false);
     }
   }, [isLogin, toggleIsLogin, userInfo]);

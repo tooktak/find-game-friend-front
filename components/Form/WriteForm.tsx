@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
-import { FormEventHandler, useCallback, useMemo,} from 'react';
+import { useRouter } from 'next/dist/client/router';
+import { FormEventHandler, useCallback, useMemo } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { TextInput } from '@/components/Input';
 import { Select } from '@/components/Select';
