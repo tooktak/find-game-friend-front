@@ -4,9 +4,9 @@
 const path = require('path');
 
 const nextConfig = {
+  basePath: '/find-game-friend-front',
   swcMinify: true,
   reactStrictMode: true,
-  basePath: '',
   sassOptions: {
     includePaths: [
       path.resolve(__dirname, 'src/styles'),
