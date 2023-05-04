@@ -4,7 +4,7 @@ import MyInfoMenu from '@/components/Menu/MyInfoMenu';
 import jwtDecode from 'jwt-decode';
 import { Button } from '@/components/Button';
 import axios from 'axios';
-import { router } from 'next/client';
+import { useRouter } from 'next/dist/client/router';
 import { type, userInfo } from 'os';
 
 const MyInfoLayout = () => {
@@ -16,6 +16,8 @@ const MyInfoLayout = () => {
     ? jwtDecode(jwtToken)
     : null;
   const userId = Number(decodedToken?.sub);
+
+  const router = useRouter();
 
   const removeMemberInfo = () => {
     const isCheck = confirm('정말 탈퇴하시겠습니까?');

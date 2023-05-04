@@ -103,10 +103,7 @@ const MyPostLayout = () => {
           withCredentials: true,
         })
         .then(response => {
-          console.log(response);
-          if (typeof window !== 'undefined') {
-            window.location.href = '/mypost';
-          }
+          location.href = '/mypost';
           //성공적으로 데이터 전송
         })
         .catch(error => {
