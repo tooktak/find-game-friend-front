@@ -23,9 +23,9 @@ const MyInfoLayout = () => {
     const isCheck = confirm('정말 탈퇴하시겠습니까?');
     if (isCheck && userId !== undefined) {
       axios
-        .delete('http://localhost:8080/remove/' + userId)
+        .delete('http://localhost:80/remove/' + userId)
         .then(response => {
-          router.push('http://localhost:3000');
+          router.push('/');
           //성공적으로 데이터 전송
         })
         .catch(error => {

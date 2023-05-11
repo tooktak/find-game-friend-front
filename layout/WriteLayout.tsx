@@ -56,7 +56,7 @@ const WriteLayout = () => {
           data.memberId = userId;
         }
         axios
-          .post('http://localhost:8080/find-mate-post/create', data, {
+          .post('http://localhost:80/find-mate-post/create', data, {
             withCredentials: true,
           })
           .then(response => {

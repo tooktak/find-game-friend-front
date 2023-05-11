@@ -15,7 +15,7 @@ const RemoveLink = ({ id }: { id: string }) => {
     const isCheck = confirm('정말 삭제하시겠습니까?');
     if (isCheck && id !== undefined) {
       axios
-        .delete('http://localhost:8080/find-mate-post/delete/' + id, {
+        .delete('http://localhost:80/find-mate-post/delete/' + id, {
           withCredentials: true,
         })
         .then(() => {

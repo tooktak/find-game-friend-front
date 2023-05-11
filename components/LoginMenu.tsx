@@ -21,7 +21,7 @@ const LoginMenu = () => {
   const onLogout = useCallback(() => {
     setUserInfoLogout();
     axios
-      .get('http://localhost:8080/sign-out', { withCredentials: true })
+      .get('http://localhost:80/sign-out', { withCredentials: true })
       .then(response => {
         console.log(response);
         // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
