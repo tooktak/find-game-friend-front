@@ -24,7 +24,7 @@ const MyInfoLayout = () => {
     if (isCheck && userId !== undefined) {
       axios
         .delete(
-          'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/remove/' +
+          '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/remove/' +
             userId,
         )
         .then(response => {

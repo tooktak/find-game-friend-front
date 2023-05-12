@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL =
-  'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080';
+  '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080';
 /*process.env.REST_URL_SERVER || */
 const fetcher = axios.create({
   baseURL: BASE_URL,

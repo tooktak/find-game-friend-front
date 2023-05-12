@@ -100,7 +100,7 @@ const MyPostLayout = () => {
     if (isCheck !== undefined) {
       axios
         .delete(
-          'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/deleteAll',
+          '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/deleteAll',
           {
             withCredentials: true,
           },

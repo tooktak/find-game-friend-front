@@ -16,7 +16,7 @@ const RemoveLink = ({ id }: { id: string }) => {
     if (isCheck && id !== undefined) {
       axios
         .delete(
-          'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/delete/' +
+          '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/delete/' +
             id,
           {
             withCredentials: true,

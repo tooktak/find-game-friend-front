@@ -22,7 +22,7 @@ const LoginMenu = () => {
     setUserInfoLogout();
     axios
       .get(
-        'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/sign-out',
+        '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/sign-out',
         { withCredentials: true },
       )
       .then(response => {

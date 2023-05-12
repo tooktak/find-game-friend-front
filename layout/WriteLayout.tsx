@@ -57,7 +57,7 @@ const WriteLayout = () => {
         }
         axios
           .post(
-            'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/create',
+            '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/create',
             data,
             {
               withCredentials: true,
