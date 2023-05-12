@@ -99,7 +99,7 @@ const MyPostLayout = () => {
     const isCheck = confirm('모두 삭제 하시겠습니까?');
     if (isCheck !== undefined) {
       axios
-        .delete('http://localhost:80/find-mate-post/deleteAll', {
+        .delete('http://43.201.20.164:8080/find-mate-post/deleteAll', {
           withCredentials: true,
         })
         .then(response => {

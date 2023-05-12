@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:80';
+const BASE_URL = 'http://43.201.20.164:8080';
 /*process.env.REST_URL_SERVER || */
 const fetcher = axios.create({
   baseURL: BASE_URL,
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'http://localhost:80',
+    'Access-Control-Allow-Origin': 'http://43.201.20.164:8080',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     'Access-Control-Allow-Credentials': true,
   },
