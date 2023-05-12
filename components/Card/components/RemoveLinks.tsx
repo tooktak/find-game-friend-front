@@ -15,9 +15,13 @@ const RemoveLink = ({ id }: { id: string }) => {
     const isCheck = confirm('정말 삭제하시겠습니까?');
     if (isCheck && id !== undefined) {
       axios
-        .delete('http://43.201.20.164:8080/find-mate-post/delete/' + id, {
-          withCredentials: true,
-        })
+        .delete(
+          'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/delete/' +
+            id,
+          {
+            withCredentials: true,
+          },
+        )
         .then(() => {
           router.push('/mypost');
           //성공적으로 데이터 전송

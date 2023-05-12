@@ -56,9 +56,13 @@ const WriteLayout = () => {
           data.memberId = userId;
         }
         axios
-          .post('http://43.201.20.164:8080/find-mate-post/create', data, {
-            withCredentials: true,
-          })
+          .post(
+            'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/create',
+            data,
+            {
+              withCredentials: true,
+            },
+          )
           .then(response => {
             router.back();
             // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.

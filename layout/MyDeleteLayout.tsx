@@ -23,7 +23,10 @@ const MyInfoLayout = () => {
     const isCheck = confirm('정말 탈퇴하시겠습니까?');
     if (isCheck && userId !== undefined) {
       axios
-        .delete('http://43.201.20.164:8080/remove/' + userId)
+        .delete(
+          'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/remove/' +
+            userId,
+        )
         .then(response => {
           router.push('/');
           //성공적으로 데이터 전송

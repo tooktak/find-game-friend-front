@@ -21,7 +21,10 @@ const LoginMenu = () => {
   const onLogout = useCallback(() => {
     setUserInfoLogout();
     axios
-      .get('http://43.201.20.164:8080/sign-out', { withCredentials: true })
+      .get(
+        'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/sign-out',
+        { withCredentials: true },
+      )
       .then(response => {
         console.log(response);
         // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.

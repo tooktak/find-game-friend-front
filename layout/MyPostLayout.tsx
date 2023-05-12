@@ -99,9 +99,12 @@ const MyPostLayout = () => {
     const isCheck = confirm('모두 삭제 하시겠습니까?');
     if (isCheck !== undefined) {
       axios
-        .delete('http://43.201.20.164:8080/find-mate-post/deleteAll', {
-          withCredentials: true,
-        })
+        .delete(
+          'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/deleteAll',
+          {
+            withCredentials: true,
+          },
+        )
         .then(response => {
           location.href = '/mypost';
           //성공적으로 데이터 전송
