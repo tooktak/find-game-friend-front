@@ -8,8 +8,7 @@ const fetcher = axios.create({
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin':
-      'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080',
+    'Access-Control-Allow-Origin': 'https://find-game-friend-front.vercel.app/',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     'Access-Control-Allow-Credentials': true,
   },
