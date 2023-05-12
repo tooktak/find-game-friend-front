@@ -4,6 +4,10 @@ function MyDocument() {
   return (
     <Html lang="kr">
       <Head>
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
