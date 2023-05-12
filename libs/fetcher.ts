@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL =
-  'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/';
+  'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080';
 /*process.env.REST_URL_SERVER || */
 const fetcher = axios.create({
   baseURL: BASE_URL,
@@ -9,7 +9,7 @@ const fetcher = axios.create({
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin':
-      'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/',
+      'http://ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     'Access-Control-Allow-Credentials': true,
   },
