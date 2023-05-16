@@ -22,10 +22,8 @@ const LoginMenu = () => {
     setUserInfoLogout();
     axios
       .get('https://aribomy.com/sign-out', { withCredentials: true })
-      .then(response => {
-        // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
-      })
       .catch(error => {
+        console.log(error);
         // 데이터 전송에 실패한 경우 실행할 코드를 작성합니다.
       });
   }, [setUserInfoLogout]);
