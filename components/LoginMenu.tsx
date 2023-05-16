@@ -22,7 +22,7 @@ const LoginMenu = () => {
     setUserInfoLogout();
     axios
       .get(
-        '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/sign-out',
+        'https://aribomy.com/sign-out',
         { withCredentials: true },
       )
       .then(response => {

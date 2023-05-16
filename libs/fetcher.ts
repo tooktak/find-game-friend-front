@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL =
-  '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080';
+const BASE_URL = 'https://aribomy.com/';
 /*process.env.REST_URL_SERVER || */
 const fetcher = axios.create({
   baseURL: BASE_URL,

@@ -12,7 +12,7 @@
     "deploy": "next build && next export",
     "export": "next export"
   },
-  "proxy": "//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080",
+  "proxy": "https://aribomy.com",
   "dependencies": {
     "@leecheuk/react-google-login": "^5.4.1",
     "@types/google-one-tap": "^1.2.2",

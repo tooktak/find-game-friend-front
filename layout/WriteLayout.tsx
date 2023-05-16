@@ -57,7 +57,7 @@ const WriteLayout = () => {
         }
         axios
           .post(
-            '//ec2-43-201-20-164.ap-northeast-2.compute.amazonaws.com:8080/find-mate-post/create',
+            'https://aribomy.com/find-mate-post/create',
             data,
             {
               withCredentials: true,
