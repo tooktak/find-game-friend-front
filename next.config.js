@@ -48,7 +48,7 @@ module.exports = {
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src 'self' https://aribomy.com; connect-src 'self' https://aribomy.com;",
+              "default-src 'self' https://aribomy.com; 'unsafe-inline'; connect-src 'self' https://aribomy.com; 'unsafe-inline';",
           },
         ],
       },
