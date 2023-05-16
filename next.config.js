@@ -48,8 +48,8 @@ module.exports = {
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src 'self' https://aribomy.com 'unsafe-inline'; img-src * data:;" +
-              " connect-src 'self' https://aribomy.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com;",
+              "default-src 'self' https://aribomy.com 'unsafe-inline'; img-src * data: script-src-elem 'self' https://accounts.google.com/gsi/client;" +
+              " connect-src 'self' https://aribomy.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com script-src-elem 'self' https://accounts.google.com/gsi/client;",
           },
         ],
       },
