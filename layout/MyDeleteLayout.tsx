@@ -23,10 +23,7 @@ const MyInfoLayout = () => {
     const isCheck = confirm('정말 탈퇴하시겠습니까?');
     if (isCheck && userId !== undefined) {
       axios
-        .delete(
-          'https://aribomy.com/remove/' +
-            userId,
-        )
+        .delete('https://aribomy.com/remove/' + userId)
         .then(response => {
           router.push('/');
           //성공적으로 데이터 전송

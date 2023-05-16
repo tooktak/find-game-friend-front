@@ -15,13 +15,9 @@ const RemoveLink = ({ id }: { id: string }) => {
     const isCheck = confirm('정말 삭제하시겠습니까?');
     if (isCheck && id !== undefined) {
       axios
-        .delete(
-          'https://aribomy.com/find-mate-post/delete/' +
-            id,
-          {
-            withCredentials: true,
-          },
-        )
+        .delete('https://aribomy.com/find-mate-post/delete/' + id, {
+          withCredentials: true,
+        })
         .then(() => {
           router.push('/mypost');
           //성공적으로 데이터 전송

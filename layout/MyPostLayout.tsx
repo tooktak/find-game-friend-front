@@ -99,12 +99,9 @@ const MyPostLayout = () => {
     const isCheck = confirm('모두 삭제 하시겠습니까?');
     if (isCheck !== undefined) {
       axios
-        .delete(
-          'https://aribomy.com/find-mate-post/deleteAll',
-          {
-            withCredentials: true,
-          },
-        )
+        .delete('https://aribomy.com/find-mate-post/deleteAll', {
+          withCredentials: true,
+        })
         .then(response => {
           location.href = '/mypost';
           //성공적으로 데이터 전송

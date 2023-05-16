@@ -21,10 +21,7 @@ const LoginMenu = () => {
   const onLogout = useCallback(() => {
     setUserInfoLogout();
     axios
-      .get(
-        'https://aribomy.com/sign-out',
-        { withCredentials: true },
-      )
+      .get('https://aribomy.com/sign-out', { withCredentials: true })
       .then(response => {
         console.log(response);
         // 성공적으로 데이터를 전송한 경우 실행할 코드를 작성합니다.
