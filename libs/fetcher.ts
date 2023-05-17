@@ -6,8 +6,8 @@ const fetcher = axios.create({
   baseURL: BASE_URL,
   timeout: 1000,
   headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://aribomy.com',
+    'Content-Type': 'https://find-game-friend-front.vercel.app/',
+    'Access-Control-Allow-Origin': '',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     'Access-Control-Allow-Credentials': true,
   },

@@ -51,6 +51,10 @@ module.exports = {
               "default-src 'self' https://aribomy.com 'unsafe-inline';" +
               "connect-src 'self' https://aribomy.com 'unsafe-inline'; img-src * data:; font-src 'self' https://fonts.gstatic.com; script-src-elem 'self' https://accounts.google.com/gsi/client https://accounts.google.com/gsi/client;",
           },
+          {
+            key: 'Set-Cookie',
+            value: 'SameSite=None; Secure; HttpOnly',
+          },
         ],
       },
     ];
