@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://aribomy.com';
+const BASE_URL = 'https://api.aribomy.com';
 /*process.env.REST_URL_SERVER || */
 const fetcher = axios.create({
   baseURL: BASE_URL,
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://aribomy.com',
+    'Access-Control-Allow-Origin': 'https://api.aribomy.com',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
     'Access-Control-Allow-Credentials': true,
   },

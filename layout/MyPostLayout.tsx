@@ -99,7 +99,7 @@ const MyPostLayout = () => {
     const isCheck = confirm('모두 삭제 하시겠습니까?');
     if (isCheck !== undefined) {
       axios
-        .delete('https://aribomy.com/find-mate-post/deleteAll', {
+        .delete('https://api.aribomy.com/find-mate-post/deleteAll', {
           withCredentials: true,
         })
         .then(response => {

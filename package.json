@@ -12,7 +12,7 @@
     "deploy": "next build && next export",
     "export": "next export"
   },
-  "proxy": "https://aribomy.com",
+  "proxy": "https://api.aribomy.com",
   "dependencies": {
     "@leecheuk/react-google-login": "^5.4.1",
     "@types/google-one-tap": "^1.2.2",

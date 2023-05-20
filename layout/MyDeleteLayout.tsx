@@ -5,7 +5,6 @@ import jwtDecode from 'jwt-decode';
 import { Button } from '@/components/Button';
 import axios from 'axios';
 import { useRouter } from 'next/dist/client/router';
-import { type, userInfo } from 'os';
 
 const MyInfoLayout = () => {
   const jwtToken =
@@ -23,7 +22,7 @@ const MyInfoLayout = () => {
     const isCheck = confirm('정말 탈퇴하시겠습니까?');
     if (isCheck && userId !== undefined) {
       axios
-        .delete('https://aribomy.com/remove/' + userId)
+        .delete('https://api.aribomy.com/remove/' + userId)
         .then(response => {
           router.push('/');
           //성공적으로 데이터 전송

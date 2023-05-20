@@ -56,7 +56,7 @@ const WriteLayout = () => {
           data.memberId = userId;
         }
         axios
-          .post('https://aribomy.com/find-mate-post/create', data, {
+          .post('https://api.aribomy.com/find-mate-post/create', data, {
             withCredentials: true,
           })
           .then(response => {
