@@ -43,6 +43,20 @@ module.exports = {
   async headers() {
     return [
       {
+        source: '/api/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: 'https://api.aribomy.com',
+          }, // 서버 출처 설정
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, POST, PUT, DELETE',
+          }, // 허용할 HTTP 메서드 설정
+          { key: 'Access-Control-Allow-Credentials', value: 'true' }, // 인증 정보 허용 여부 설정
+        ],
+      },
+      {
         source: '/',
         headers: [
           {
