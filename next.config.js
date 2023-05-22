@@ -14,7 +14,7 @@ const nextConfig = {
     prependData: `@import 'styles/media.scss'; @import 'styles/theme.scss';`,
   },
   env: {
-    REST_URL_SERVER: process.env.REST_URL_SERVER,
+    REST_URL_SERVER: 'https://api.aribomy.com',
   },
 
   webpack(config) {
