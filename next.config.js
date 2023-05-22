@@ -48,12 +48,12 @@ module.exports = {
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src 'self' https://api.aribomy.com 'unsafe-inline';" +
+              "default-src 'self' https://api.aribomy.com 'unsafe-inline'; img-src * data:; font-src 'self' https://fonts.gstatic.com; script-src-elem 'self' https://accounts.google.com/gsi/client https://accounts.google.com/gsi/client;" +
               "connect-src 'self' https://api.aribomy.com 'unsafe-inline'; img-src * data:; font-src 'self' https://fonts.gstatic.com; script-src-elem 'self' https://accounts.google.com/gsi/client https://accounts.google.com/gsi/client;",
           },
           {
-            key: 'Set-Cookie',
-            value: 'SameSite=None; Secure; HttpOnly',
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
           },
         ],
       },
