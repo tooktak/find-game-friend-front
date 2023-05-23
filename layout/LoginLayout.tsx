@@ -9,14 +9,23 @@ import { CredentialResponse } from 'google-one-tap';
 const LoginLayout = () => {
   const { setUserInfoData } = useLoginContext();
   const router = useRouter();
-  const { mutate, isLoading } = useMutation(
-    memberService.google_oauth_callback,
-    {
-      onSuccess: data => {
-        setUserInfoData({ sub: data });
-      },
+  const { mutate } = useMutation(memberService.google_oauth_callback, {
+    onSuccess: data => {
+      setUserInfoData({
+        sub: data,
+        id: '',
+        age: '',
+        address: '',
+        email: '',
+        gender: '',
+        name: '',
+        memberId: '',
+        nickname: '',
+        password: '',
+        pictureURL: '',
+      });
     },
-  );
+  });
 
   const useScript = (
     url: unknown,
@@ -42,6 +51,18 @@ const LoginLayout = () => {
     router.push('/', undefined, { shallow: true });
     // 여기에 리턴값 확인 한뒤 맴버 정보 및 localstorge에 관련값 저장.
   };
+  /*
+  useScript('https://accounts.google.com/gsi/client', () => {
+    google.accounts.id.initialize({
+      client_id:
+        '1033931690858-58kuqhjo9877bcnod4og9jg1av9cusk1.apps.googleusercontent.com',
+      callback: onGoogleSignIn,
+    });
+    google.accounts.id.renderButton(googleSignInButton.current, {
+      width: '250',
+      shape: 'square',
+    });
+  });*/
   useScript('https://accounts.google.com/gsi/client', () => {
     google.accounts.id.initialize({
       client_id:
