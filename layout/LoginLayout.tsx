@@ -4,7 +4,6 @@ import memberService from '@/services/member';
 import { useEffect, useRef } from 'react';
 import { useMutation } from 'react-query';
 import { useRouter } from 'next/dist/client/router';
-import { CredentialResponse } from 'google-one-tap';
 
 const LoginLayout = () => {
   const { setUserInfoData } = useLoginContext();
@@ -13,32 +12,15 @@ const LoginLayout = () => {
     memberService.google_oauth_callback,
     {
       onSuccess: data => {
-        setUserInfoData({
-          sub: data,
-          id: '',
-          age: '',
-          address: '',
-          email: '',
-          gender: '',
-          name: '',
-          memberId: '',
-          nickname: '',
-          password: '',
-          pictureURL: '',
-        });
+        setUserInfoData({ sub: data });
       },
     },
   );
 
-  const useScript = (
-    url: unknown,
-    onload: ((this: GlobalEventHandlers, ev: Event) => unknown) | null,
-  ) => {
+  const useScript = (url: unknown, onload: unknown) => {
     useEffect(() => {
       const script = document.createElement('script');
-      if (typeof url === 'string') {
-        script.src = url;
-      }
+      script.src = url;
       script.onload = onload;
       document.head.appendChild(script);
 
@@ -48,36 +30,23 @@ const LoginLayout = () => {
     }, [url, onload]);
   };
 
-  const googleSignInButton = useRef<HTMLDivElement>(null);
-  const onGoogleSignIn = async (res: CredentialResponse) => {
+  const googleSignInButton = useRef(null);
+  const onGoogleSignIn = async res => {
     mutate(res.credential);
     router.push('/', undefined, { shallow: true });
     // 여기에 리턴값 확인 한뒤 맴버 정보 및 localstorge에 관련값 저장.
   };
-  /*
+
   useScript('https://accounts.google.com/gsi/client', () => {
-    google.accounts.id.initialize({
+    window.google.accounts.id.initialize({
       client_id:
         '1033931690858-58kuqhjo9877bcnod4og9jg1av9cusk1.apps.googleusercontent.com',
       callback: onGoogleSignIn,
     });
-    google.accounts.id.renderButton(googleSignInButton.current, {
+    window.google.accounts.id.renderButton(googleSignInButton.current, {
       width: '250',
       shape: 'square',
     });
-  });*/
-  useScript('https://accounts.google.com/gsi/client', () => {
-    google.accounts.id.initialize({
-      client_id:
-        '1033931690858-58kuqhjo9877bcnod4og9jg1av9cusk1.apps.googleusercontent.com',
-      callback: onGoogleSignIn,
-    });
-    if (googleSignInButton.current) {
-      google.accounts.id.renderButton(googleSignInButton.current, {
-        width: 250,
-        shape: 'square',
-      });
-    }
   });
 
   return (
