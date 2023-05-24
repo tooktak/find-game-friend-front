@@ -3,14 +3,12 @@ import cx from '@/styles/cx';
 import { ReactNode } from 'react';
 import { MdDelete } from 'react-icons/md';
 import axios from 'axios';
-import { useRouter } from 'next/dist/client/router';
 
 export const RemoveIconContainer = ({ children }: { children: ReactNode }) => {
   return <div className={styles.container}>{children}</div>;
 };
 
 const RemoveLink = ({ id }: { id: string }) => {
-  const router = useRouter();
   const handleDelete = () => {
     const isCheck = confirm('정말 삭제하시겠습니까?');
     if (isCheck && id !== undefined) {
@@ -19,7 +17,7 @@ const RemoveLink = ({ id }: { id: string }) => {
           withCredentials: true,
         })
         .then(() => {
-          router.push('https://aribomy.com/mypost');
+          location.href = 'https://aribomy.com/mypost';
           //성공적으로 데이터 전송
         })
         .catch(error => {
