@@ -63,13 +63,13 @@ module.exports = {
             key: 'Content-Security-Policy',
             value:
               "default-src 'self' https://api.aribomy.com; " +
-              "style-src 'self' 'unsafe-inline';" +
-              "style-src-elem 'self' 'unsafe-inline' https://accounts.google.com;" +
               "img-src 'self' data:; " +
               "font-src 'self' https://fonts.gstatic.com; " +
               "script-src 'self' https://accounts.google.com; " +
               "frame-src 'self' https://accounts.google.com;" +
-              "connect-src 'self' https://api.aribomy.com; ",
+              "connect-src 'self' https://api.aribomy.com; " +
+              "style-src 'self' 'unsafe-inline';" +
+              "style-src-elem 'self' 'unsafe-inline' https://accounts.google.com;",
           },
         ],
       },
