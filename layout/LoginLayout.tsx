@@ -51,7 +51,7 @@ const LoginLayout = () => {
     router.push('/', undefined, { shallow: true });
     // 여기에 리턴값 확인 한뒤 맴버 정보 및 localstorge에 관련값 저장.
   };
-
+  /*
   useScript('https://accounts.google.com/gsi/client', () => {
     google.accounts.id.initialize({
       client_id:
@@ -62,8 +62,8 @@ const LoginLayout = () => {
       width: '250',
       shape: 'square',
     });
-  });
-  /*  useScript('https://accounts.google.com/gsi/client', () => {
+  });*/
+  useScript('https://accounts.google.com/gsi/client', () => {
     google.accounts.id.initialize({
       client_id:
         '1033931690858-58kuqhjo9877bcnod4og9jg1av9cusk1.apps.googleusercontent.com',
@@ -75,7 +75,7 @@ const LoginLayout = () => {
         shape: 'square',
       });
     }
-  });*/
+  });
 
   return (
     <Layout>

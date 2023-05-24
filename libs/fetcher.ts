@@ -9,6 +9,7 @@ const fetcher = axios.create({
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': BASE_URL,
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    'Access_Control-Allow-Credentials': true,
   },
   withCredentials: true,
 });
