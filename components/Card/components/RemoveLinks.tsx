@@ -19,7 +19,7 @@ const RemoveLink = ({ id }: { id: string }) => {
           withCredentials: true,
         })
         .then(() => {
-          router.push('/mypost');
+          router.push('https://aribomy.com/mypost');
           //성공적으로 데이터 전송
         })
         .catch(error => {
