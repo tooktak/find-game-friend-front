@@ -4,7 +4,7 @@ const BASE_URL = 'https://api.aribomy.com';
 /*process.env.REST_URL_SERVER || */
 const fetcher = axios.create({
   baseURL: BASE_URL,
-  timeout: 1000,
+  timeout: 100000,
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': BASE_URL,
